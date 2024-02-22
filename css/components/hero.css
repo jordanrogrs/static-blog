@@ -1,0 +1,30 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+#hero__title {
+    font-size: var(--size-6xl);
+    margin: 0 1.25em;
+}
+
+/* lg */
+@media (min-width: 1024px) {
+    #hero__title {
+        font-size: var(--size-8xl);
+        border-right: 2px solid var(--color-dark);
+        animation: typing 400ms linear 0ms infinite;
+    }
+
+    @keyframes typing {
+        0%, 50% {
+            border-color: transparent; /* Invisible border */
+        }
+        100% {
+            border-color: black; /* Visible border */
+        }
+    }
+}
