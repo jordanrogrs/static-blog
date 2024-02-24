@@ -7,25 +7,38 @@
 }
 
 #hero__title {
-    font-size: var(--size-6xl);
-    margin: 0 1.25em;
+    font-size: var(--size-5xl);
     min-height: 1.5ch;
+    border-right: 2px solid var(--color-dark);
+    animation: typing 400ms linear 0ms infinite;
+}
+
+@keyframes typing {
+    0%, 50% {
+        border-color: transparent; /* Invisible border */
+    }
+    100% {
+        border-color: var(--color-dark); /* Visible border */
+    }
+}
+
+/* md */
+@media (min-width: 768px) {
+    #hero__title {
+        font-size: var(--size-6xl);
+    }
 }
 
 /* lg */
 @media (min-width: 1024px) {
     #hero__title {
-        font-size: var(--size-8xl);
-        border-right: 2px solid var(--color-dark);
-        animation: typing 400ms linear 0ms infinite;
+        font-size: var(--size-7xl);
     }
+}
 
-    @keyframes typing {
-        0%, 50% {
-            border-color: transparent; /* Invisible border */
-        }
-        100% {
-            border-color: black; /* Visible border */
-        }
+/* xl */
+@media (min-width: 1280px) {
+    #hero__title {
+        font-size: var(--size-8xl);
     }
 }

@@ -2,13 +2,13 @@
     /* colors */
     --color-white: #ffffff;
     --color-black: #000000;
-    --color-light: #fefdfb;
-    --color-dark: #0b0d0f;
-    --color-accent-dark: #556ec1;
-    --color-accent-light: #d6dcf0;
+    --color-light: #f9f1eb;
+    --color-dark: #10231a;
+    --color-accent-dark: #74be9b;
+    --color-accent-light: #96ceb4;
 
-    /* accent-light rgb(253, 206, 206) */
-    /* accent-dark rgb(250, 133, 133) */
+    /* buttons */
+    --border-w: 2px;
 
     /* sizes */
     --size-xxs: 0.5rem;
@@ -40,8 +40,10 @@ html {
 .dark-mode {
     --color-white: #000000;
     --color-black: #ffffff;
-    --color-dark: #fefdfb;
-    --color-light: #0b0d0f;
+    --color-dark: #f9f1eb;
+    --color-light: #08110d;
+    --color-accent-dark: #ffffff;
+    --color-accent-light: #183427;
 }
 
 body {
@@ -81,7 +83,7 @@ strong {
 
 /* Scrollbar */
 body::-webkit-scrollbar {
-    width: 8px;
+    width: 2px;
   }
    
   body::-webkit-scrollbar-track {

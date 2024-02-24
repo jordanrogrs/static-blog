@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
+    <title>Jordan Rogers - Web Developer</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, target-densitydpi=device-dpi">
+
     <link href="https://api.fontshare.com/v2/css?f[]=ranade@700,300,400,500&f[]=satoshi@700,401,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Jordan Rogers - Web Developer</title>
     <link rel="stylesheet" href="css/modern-normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme-toggle.css">
     <link rel="stylesheet" href="css/components/header.css">
     <link rel="stylesheet" href="css/components/hero.css">
     <link rel="stylesheet" href="css/components/about.css">
@@ -22,27 +24,17 @@
 <header class="header container">
     <nav>
         <ul class="header__menu">
-            <li class="move-right"><a href="#about" class="header__link">About</a></li>
-            <li class="move-right"><a href="#featured" class="header__link">Work</a></li>
-            <li class="move-right"><a href="#contact" class="header__link">Contact</a></li>
-            <li class="header__line"></li>
-            <li>
-                <button id="theme-toggle" class="header__sun move-right">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <a href="#" class="header__btn btn move-right">Resume</a>
-            </li>
+            <li><a href="#about" class="header__link">About</a></li>
+            <li><a href="#featured" class="header__link">Work</a></li>
+            <li><a href="#contact" class="header__link">Contact</a></li>
+            <li><a href="#" class="header__link">Resume</a></li>
         </ul>
-        <button id="mobile-nav__toggle"></button>
     </nav>
 </header>
-<!-- MOBILE NAV
+<!-- MOBILE NAV -->
 <div class="mobile-nav">
     <nav>
+        <button class="mobile-nav__toggle"></button>
         <ul class="mobile-nav__menu">
             <li>
                 <a class="mobile-nav__link" href="#about">About</a>
@@ -53,21 +45,24 @@
             <li>
                 <a class="mobile-nav__link" href="#contact">Contact</a>
             </li>
-            <li class="mobile-nav__link-line"></li>
             <li>
-                <button id="theme-toggle" class="mobile-nav__sun">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <a class="mobile-nav__btn btn" href="#">Resume</a>
+                <a class="mobile-nav__link" href="#">Resume</a>
             </li>
         </ul>
     </nav>
 </div>
- END OF MOBILE NAV -->
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
 
 <!-- HERO SECTION -->
 <section class="hero container">
@@ -75,31 +70,41 @@
 </section>
 <!-- END OF HERO -->
 
+<!-- WORK SECTION
+<section id="featured" class="container section">
+    <h2>Portfolio</h2>
+    <p>Insert your portfolio content here...</p>
+</section> 
+ END OF WORK -->
+
 <!-- ABOUT SECTION -->
 
 <section id="about" class="about container section">
     <div class="about__col">
-        <img src="images/Jordan-Profile-Picture.png" class="about__img parallax-effect">
+        <img src="images/Jordan-Profile.png" class="about__img">
     </div>
-    <div class="about__col about__content">
-    <h2 class="header__primary">About Me</h2>
+    <div class="about__col">
+    <h2 class="heading__primary">About Me</h2>
     <p>Hey there, I'm <strong>Jordan Rogers</strong>, a creative soul with a knack for web development. I'm driven by a passion for <strong>innovation and connection</strong>. Raised between two different cultures, I cherish diversity and the importance of different perspectives for growth.</p>
-    <p>When I'm not coding, you'll often find me at the movies or lost in the pages of my latest book.</p>
-    <a href="#" class="btn">Reach Out</a>
+    <p>When I'm not coding, you'll often find me at the movies or lost in the pages of a really good book.</p>
+    <a href="#" class="btn">Reach Out
+        <span class="btn__inner">
+            <span class="btn__effect"></span>
+        </span>
+    </a>
     </div>
 </section>
 <!-- END OF ABOUT -->
-<!--
-<section id="featured" class="container section">
-    <h2>Portfolio</h2>
-    <p>Insert your portfolio content here...</p>
-</section> -->
 
 <!-- CONTACT SECTION -->
 <section id="contact" class="contact container section">
-    <h2 class="header__primary">Get in Touch</h2>
+    <h2 class="heading__primary">Get in Touch</h2>
     <p>Click the button below to contact me.</p>
-    <a href="#" class="btn move-right fill">Reach Out</a>
+    <a href="#" class="btn">Reach Out
+        <span class="btn__inner">
+            <span class="btn__effect"></span>
+        </span>
+    </a>
 </section> 
 <!-- END OF CONTACT -->
 
@@ -110,7 +115,8 @@
 <!-- END OF FOOTER -->
 
 <script src="js/title-animation.js"></script>
-<script src="js/parallax-effect.js"></script>
+<script src="js/theme-toggle.js"></script>
+<script src="js/mobile-nav.js"></script>
 <script src="js/dark-mode.js"></script>
 <script src="js/lazy-loading.js"></script>
 </body>
