@@ -16,6 +16,21 @@
 /* xxl */
 @media (min-width: 1536px) {}
 
+.header__primary {
+    font-size: var(--size-4xl);
+    margin-bottom: 0.5em;
+}
+
+.header__secondary {
+    font-size: var(--size-3xl);
+    margin-bottom: 0.25em;
+}
+
+.header__tertiary {
+    font-size: var(--size-2xl);
+    margin-bottom: 0.25em;
+}
+
 .btn {
     display: inline-block;
     text-decoration: none;

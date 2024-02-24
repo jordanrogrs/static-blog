@@ -57,13 +57,15 @@
         display: block;
     }
 
+    .header__sun:hover {
+        color: var(--color-accent-dark);
+        transition: 0.5s;
+    }
+
     .header__btn {
         font-size: var(--size-base);
     }
     
-    .header__toggle {
-        display: none;
-    }
 }
 
 /* lg */

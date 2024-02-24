@@ -1,6 +1,7 @@
 .footer__title {
     font-size: var(--size-sm);
     font-weight: 400;
+    font-family: 'Satoshi', sans-serif;
     color: var(--color-dark);
     text-align: center;
     letter-spacing: 0.2em;
