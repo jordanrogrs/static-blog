@@ -38,11 +38,11 @@ html {
 }
 
 .dark-mode {
-    --color-white: #000000;
-    --color-black: #ffffff;
-    --color-dark: #f9f1eb;
-    --color-light: #08110d;
-    --color-accent-dark: #ffffff;
+    --color-white: #202d27;
+    --color-black: #e2cebe;
+    --color-dark: #e2cebe;
+    --color-light: #000000;
+    --color-accent-dark: #e2cebe;
     --color-accent-light: #183427;
 }
 
@@ -50,6 +50,8 @@ body {
     font-family: 'Satoshi', sans-serif;
     background-color: var(--color-light);
     color: var(--color-dark);
+    width: 100%;
+    overflow-x: hidden;
 }
 
 footer {
@@ -74,6 +76,7 @@ a {
 }
 
 p {
+    text-align: left;
     margin-bottom:1.5rem;
 }
 
