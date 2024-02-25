@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 6rem;
+    margin-top: 10rem;
 }
 
 #hero__title {
@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin-top: 10rem;
+    margin-top: 4rem;
     gap: 3rem;
     width: 80%;
 
@@ -62,9 +62,18 @@
 
 /* lg */
 @media (min-width: 1024px) {
+    .hero {
+        margin-top: 6rem;
+    }
+
+    .hero__row {
+        margin-top: 10rem;
+    }
+    
     #hero__title {
         font-size: var(--size-7xl);
     }
+
 }
 
 /* xl */

@@ -16,7 +16,7 @@ body.hidden {
     right: 1em;
     width: 3em;
     height: 3em;
-    background: var(--color-accent-light);
+    background: #86BBD8;
     border-radius: 50%;
     transition: 0.5s;
     transition-delay: 0.5s;
@@ -31,7 +31,7 @@ body.hidden {
     height: 100vh;
     transform: translate(1em, -0.5em);
     border-radius: 0;
-    padding: 4.5em 0;
+    padding: 0 1em 4.5em;
 }
 
 .mobile-nav__menu li {
@@ -50,7 +50,7 @@ body.hidden {
 
 .mobile-nav__menu .mobile-nav__link {
     text-decoration: none;
-    color: var(--color-dark);
+    color: #fff;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -63,8 +63,8 @@ body.hidden {
 }
 
 .mobile-nav__menu .mobile-nav__link:hover {
-    background: var(--color-accent-dark);
-    color: var(--color-white);
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
 }
 
 .mobile-nav__link svg {
@@ -82,7 +82,7 @@ body.hidden {
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: var(--color-dark);
+    background-color: #fff;
 }
 
 /* Mobile Nav Toggle */
@@ -93,7 +93,7 @@ body.hidden {
     right: 1em;
     width: 3em;
     height: 3em;
-    background: #74be9b;
+    background: #33658A;
     border-radius: 50%;
     transition: 0.5s;
     transition-delay: 0.5s;
@@ -118,7 +118,7 @@ body.hidden {
     width: 1.75em;
     height: 3px;
     border-radius: 3px;
-    background: #000;
+    background: #fff;
     transform: translateY(-5px);
     transition: 0.5s;
     transition-delay: 0.5s;
@@ -130,20 +130,20 @@ body.hidden {
     width: 1.75em;
     height: 3px;
     border-radius: 3px;
-    background: #000;
+    background: #fff;
     transform: translateY(5px);
     transition: 0.5s;
     transition-delay: 0.5s;
 }
 
 .mobile-nav__toggle.active::before {
-    background: var(--color-white);
+    background: #fff;
     transform: translateY(0px) rotate(45deg);
     transition-delay: 0s;
 }
 
 .mobile-nav__toggle.active::after {
-    background: var(--color-white);
+    background: #fff;
     transform: translateY(0px) rotate(-45deg);
     transition-delay: 0s;
 }

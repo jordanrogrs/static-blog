@@ -4,8 +4,8 @@
     --color-black: #000000;
     --color-light: #f9f1eb;
     --color-dark: #10231a;
-    --color-accent-dark: #74be9b;
-    --color-accent-light: #96ceb4;
+    --color-accent-dark: #86BBD8;
+    --color-accent-light: #33658A;
 
     /* buttons */
     --border-w: 2px;
@@ -38,12 +38,12 @@ html {
 }
 
 .dark-mode {
-    --color-white: #202d27;
+    --color-white: #1b2932;
     --color-black: #e2cebe;
     --color-dark: #e2cebe;
     --color-light: #000000;
-    --color-accent-dark: #e2cebe;
-    --color-accent-light: #183427;
+    --color-accent-dark: #86BBD8;
+    --color-accent-light: #2F4858;
 }
 
 body {

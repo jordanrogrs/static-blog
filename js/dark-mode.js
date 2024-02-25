@@ -5,14 +5,14 @@ const moonIcons = document.querySelectorAll('.moon-icon');
 
 // State
 const theme = localStorage.getItem('theme');
-let colorGreen = '#74be9b';
+let colorGreen = '#86BBD8';
 let colorWhite = '#ffffff';
 
 // Update SVG colors function
 function updateSvgColors() {
     const svgs = document.querySelectorAll('.contact__icon a');
     if (document.body.classList.contains('dark-mode')) {
-        colorGreen = '#ffffff';
+        colorGreen = '#86BBD8';
         colorWhite = '#000000';
     }
     svgs.forEach(svg => {
@@ -54,7 +54,7 @@ const handleThemeToggle = () => {
         toggleIcons();
     } else {
         localStorage.removeItem('theme');
-        colorGreen = '#74be9b';
+        colorGreen = '#86BBD8';
         colorWhite = '#ffffff';
         toggleIcons();
     }
