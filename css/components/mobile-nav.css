@@ -51,8 +51,9 @@ body.hidden {
 .mobile-nav__menu .mobile-nav__link {
     text-decoration: none;
     color: #fff;
-    text-transform: uppercase;
-    font-weight: 600;
+    text-transform: lowercase;
+    font-weight: 200;
+    font-size: 1.5em;
     letter-spacing: 0.12em;
     transition: 0.25s;
     display: flex;
