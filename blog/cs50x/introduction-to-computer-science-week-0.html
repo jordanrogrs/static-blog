@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Blog - Jordan Rogers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/modern-normalize.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/hero.css">
+    <link rel="stylesheet" href="../../css/components/blog.css">
+    <link rel="stylesheet" href="../../css/components/contact.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../../css/utils.css">
+</head>
+<body>
+<!-- DESKTOP NAV -->
+<header class="header container">
+    <nav>
+        <ul class="header__menu">
+            <li><a href="../../" class="header__link">Home</a></li>
+            <li><a href="../../blog" class="header__link">Blog</a></li>
+            <li><a href="../../#contact" class="header__link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- END OF DESKTOP NAV -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <nav>
+        <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
+        <ul class="mobile-nav__menu">
+            <li>
+                <a class="mobile-nav__link" href="../../#about">Home</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../blog">Blog</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle" aria-label="Toggle between light and dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
+
+ <article>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero container">
+        <div class="blog__topic">Personal Development, CS50</div>
+        <h1 id="hero__title">My Journey: First Steps.</h1>
+        <h2 id="hero__subtitle">Week 0: Introduction to CS50</h2>
+    </section>
+
+    <!-- END OF HERO -->
+
+    <!-- BLOG POST SECTION -->
+     <section class="post container">
+        <p>My first day of CS50x. So exciting!</p>
+     </section>
+
+    <!-- END OF BLOG POST -->
+
+
+ </article>
+
+
+
+<!-- OTHER POSTS SECTION -->
+
+<section id="blog" class="blog container section">
+    <h2 class="heading__primary">Other Posts.</h2>
+    <p>Oops. There aren't any other posts. Please check back in the future.</p>
+    <div class="blog__row">
+    </div>
+
+</section>
+
+<!-- END OF OTHER POSTS -->
+
+<!-- FOOTER SECTION -->
+<footer class="footer container section">
+    <h3 class="footer__title"> Jordan Rogers </h3>
+</footer>
+<!-- END OF FOOTER -->
+
+<script defer src="../../js/mobile-nav.js"></script>
+<script defer src="../../js/dark-mode.js"></script>
+</body>
+</html>

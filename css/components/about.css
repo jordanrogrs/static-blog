@@ -3,9 +3,6 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    border-radius: 2em;
-    background: var(--color-white);
-    box-shadow: 0 0 0.25em rgba(0, 0, 0, .1);
 }
 
 .about__col {
@@ -13,7 +10,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+}
+
+.about__col.desc-col {
+    align-items: flex-start;
+    padding-top: 2em;
 }
 
 .about p {
@@ -31,11 +32,12 @@
     }
 
     .about__col {
-        width: 50%;
-        align-items: center;
+        width: 30%;
+        min-width: 400px;
     }
 
     .about__col.desc-col {
         align-items: flex-start;
+        padding-left: 4em;
     }
 }

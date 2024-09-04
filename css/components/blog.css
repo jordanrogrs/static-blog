@@ -1,0 +1,43 @@
+.blog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog__row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 2em;
+    margin-top: 1.5rem;
+}
+
+.blog__article {
+    transition-duration: 0.5s;
+    text-decoration: none;
+    padding-bottom: 1.5em;
+    cursor: pointer;
+    color: var(--color-dark);
+}
+
+.blog__article:hover {
+    box-shadow: 1px 1px 7px 2px #0003;
+    transform: translateY(2px);
+    
+}
+
+.blog__topic {
+    text-transform: uppercase;
+}
+
+.blog__row .blog__topic, .blog__row .blog__title {
+    padding: 0 1.5rem;
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .blog__row {
+        grid-template-columns: 33% 33% 33%;
+    }
+}

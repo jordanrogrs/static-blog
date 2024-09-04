@@ -1,34 +1,37 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const typedTitle = document.getElementById("hero__title");
-    const texts = ["Jordan Rogers.", "Web Developer."];
+    const typedTitle = document.getElementById("hello_world");
+    const text = "hello, world\\n"; // Text to type
     let index = 0;
-    let textIndex = 0;
-    let typingSpeed = 300; // Initial typing speed (milliseconds)
-    let reverse = false; // Flag to indicate if the animation is in reverse mode
+    let typingSpeed = 500; // Slower typing speed (milliseconds)
+    let deletingSpeed = 500; // Speed for deleting characters one by one
+
+    // Add the 'typing' class initially
+    typedTitle.classList.add("typing");
 
     function type() {
-        const text = texts[textIndex];
-        if (!reverse && index < text.length) {
-            typedTitle.textContent += text.charAt(index);
+        if (index < text.length) {
+            typedTitle.textContent += text.charAt(index); // Add the next character
             index++;
-        } else if (!reverse && index === text.length) {
-            setTimeout(() => {
-                reverse = true; // Switch to reverse mode after the delay
-            }, 3000); // Stall for 3.5 seconds before reversing
-        } else if (reverse && index > 0) {
-            typedTitle.textContent = text.substring(0, index); // Remove last character
-            index--;
+            setTimeout(type, typingSpeed); // Continue typing
         } else {
-            reverse = false; // Switch back to normal mode once typing in reverse completes
-            typedTitle.textContent = ''; // Clear the typed text
-            index = 0; // Reset the index
-            textIndex = (textIndex + 1) % texts.length; // Move to the next text in the array
-            setTimeout(type, 1000); // Start typing again after a delay
-            return;
+            // After typing is finished, wait 2 seconds, then start deleting characters one by one
+            setTimeout(deleteText, 1500); // Wait before starting the deletion
         }
-        setTimeout(type, typingSpeed);
     }
 
-    // Initial start of typing animation
+    function deleteText() {
+        if (index > text.length - 2) { // Start deleting from the last character (the \n sequence)
+            typedTitle.textContent = typedTitle.textContent.slice(0, -1); // Remove one character at a time
+            index--;
+            setTimeout(deleteText, deletingSpeed); // Continue deleting
+        } else {
+            // Once deletion is finished, remove the 'typing' class
+            setTimeout(() => {
+                typedTitle.classList.remove("typing");
+            }, 1000); // Delay before removing the class
+        }
+    }
+
+    // Start typing
     setTimeout(type, 0);
 });

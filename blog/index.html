@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <title>Jordan Rogers - Web Developer</title>
+    <title>Blog - Jordan Rogers</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="css/modern-normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/components/header.css">
-    <link rel="stylesheet" href="css/components/hero.css">
-    <link rel="stylesheet" href="css/components/blog.css">
-    <link rel="stylesheet" href="css/components/about.css">
-    <link rel="stylesheet" href="css/components/contact.css">
-    <link rel="stylesheet" href="css/components/footer.css">
-    <link rel="stylesheet" href="css/components/mobile-nav.css">
-    <link rel="stylesheet" href="css/utils.css">
+    <link rel="stylesheet" href="../css/modern-normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/hero.css">
+    <link rel="stylesheet" href="../css/components/blog.css">
+    <link rel="stylesheet" href="../css/components/contact.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <link rel="stylesheet" href="../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../css/utils.css">
 </head>
 <body>
 <!-- DESKTOP NAV -->
 <header class="header container">
     <nav>
         <ul class="header__menu">
-            <li><a href="#about" class="header__link">About</a></li>
-            <li><a href="/blog" class="header__link">Blog</a></li>
+            <li><a href="../#about" class="header__link">About</a></li>
+            <li><a href="#blog" class="header__link">Blog</a></li>
             <li><a href="#contact" class="header__link">Contact</a></li>
         </ul>
     </nav>
@@ -36,10 +35,10 @@
         <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
         <ul class="mobile-nav__menu">
             <li>
-                <a class="mobile-nav__link" href="#about">About</a>
+                <a class="mobile-nav__link" href="../#about">About</a>
             </li>
             <li>
-                <a class="mobile-nav__link" href="/blog">Blog</a>
+                <a class="mobile-nav__link" href="#blog">Blog</a>
             </li>
             <li>
                 <a class="mobile-nav__link" href="#contact">Contact</a>
@@ -62,21 +61,20 @@
 
 <!-- HERO SECTION -->
 <section class="hero container">
-    <h1 id="hero__title">Jordan Rogers.</h1>
-    <h2 id="hero__subtitle">Web Developer</h2>
-    <div id="hello_world" class="heading__primary typing"></div>
+    <h1 id="hero__title">Blog.</h1>
+    <h2 id="hero__subtitle">Personal development and computer science</h2>
 </section>
 <!-- END OF HERO -->
 
 <!-- BLOG SECTION -->
 
 <section id="blog" class="blog container section">
-    <h2 class="heading__primary">Read my blog</h2>
+    <h2 class="heading__primary">Latest Posts</h2>
     <p>Follow along my journey of self-improvement as I become the best possible me.</p>
     <div class="blog__row">
         <a href="/blog/cs50x/introduction-to-computer-science-week-0" class="blog__article">
             <div>
-                <img src="images\blog\CS50x 2024 Week 0 YT Thumbnail.jpg" alt="CS50x 2024 - Scratch">
+                <img src="../images/blog/CS50x 2024 Week 0 YT Thumbnail.jpg" alt="CS50x 2024 - Scratch">
                 <div class="blog__topic">Personal Development, CS50</div>
                 <div class="blog__title heading__secondary">Week 0: Introduction to CS50</div>
             </div>
@@ -85,19 +83,6 @@
 
 </section>
 <!-- END OF BLOG -->
-
-<!-- ABOUT SECTION -->
-
-<section id="about" class="about container section">
-    <div class="about__col">
-        <img loading="lazy" src="images/Jordan-Profile-Picture.webp" alt="Photo of Jordan Rogers" class="about__img">
-    </div>
-    <div class="about__col desc-col">
-    <h2 class="heading__primary">About me</h2>
-    <p>Hey there, I'm <strong>Jordan Rogers</strong>, follow my Computer Science journey as I learn new things and solve real-world problems. Or just say hi!</p>
-    </div>
-</section>
-<!-- END OF ABOUT -->
 
 <!-- CONTACT SECTION -->
 <section id="contact" class="contact container section">
@@ -139,8 +124,7 @@
 </footer>
 <!-- END OF FOOTER -->
 
-<script defer src="js/title-animation.js"></script>
-<script defer src="js/mobile-nav.js"></script>
-<script defer src="js/dark-mode.js"></script>
+<script defer src="../js/mobile-nav.js"></script>
+<script defer src="../js/dark-mode.js"></script>
 </body>
 </html>

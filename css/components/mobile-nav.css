@@ -16,10 +16,10 @@ body.hidden {
     right: 1em;
     width: 3em;
     height: 3em;
-    background: #86BBD8;
+    background: #6b9080;
     border-radius: 50%;
-    transition: 0.5s;
-    transition-delay: 0.5s;
+    transition: 0.2s;
+    transition-delay: 0.15s;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -36,12 +36,12 @@ body.hidden {
 
 .mobile-nav__menu li {
     list-style: none;
-    transition: 1.5s;
+    transition: .25s;
     transform: scale(0)
 }
 
 .mobile-nav__menu.active li {
-    transition-delay: 0.75s;
+    transition-delay: 0.15s;
     display: flex;
     width: 100%;
     height: 100%;
@@ -54,7 +54,7 @@ body.hidden {
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 0.12em;
-    transition: 0.5s;
+    transition: 0.25s;
     display: flex;
     align-items: center;
     width: 100%;
@@ -93,15 +93,14 @@ body.hidden {
     right: 1em;
     width: 3em;
     height: 3em;
-    background: #33658A;
+    background: #6b9080;
     border-radius: 50%;
-    transition: 0.5s;
-    transition-delay: 0.5s;
+    transition: 0.25s;
+    transition-delay: 0.15s;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition-delay: 0.5s;
 }
 
 .mobile-nav__toggle.active {
@@ -120,8 +119,8 @@ body.hidden {
     border-radius: 3px;
     background: #fff;
     transform: translateY(-5px);
-    transition: 0.5s;
-    transition-delay: 0.5s;
+    transition: 0.25s;
+    transition-delay: 0.15s;
 }
 
 .mobile-nav__toggle::after {
@@ -132,8 +131,8 @@ body.hidden {
     border-radius: 3px;
     background: #fff;
     transform: translateY(5px);
-    transition: 0.5s;
-    transition-delay: 0.5s;
+    transition: 0.25s;
+    transition-delay: 0.15s;
 }
 
 .mobile-nav__toggle.active::before {

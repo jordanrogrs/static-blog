@@ -1,11 +1,11 @@
 :root {
     /* colors */
-    --color-white: #ffffff;
+    --color-white: #fcfdfc;
     --color-black: #000000;
-    --color-light: #f9f1eb;
-    --color-dark: #10231a;
-    --color-accent-dark: #86BBD8;
-    --color-accent-light: #33658A;
+    --color-light: #F6FFF8;
+    --color-dark: #171A21;
+    --color-accent-dark: #6B9080;
+    --color-accent-light: #CCE3DE;
 
     /* buttons */
     --border-w: 2px;
@@ -38,12 +38,12 @@ html {
 }
 
 .dark-mode {
-    --color-white: #1b2932;
-    --color-black: #e2cebe;
-    --color-dark: #e2cebe;
-    --color-light: #000000;
-    --color-accent-dark: #86BBD8;
-    --color-accent-light: #2F4858;
+    --color-white: #171A21;
+    --color-black: #FFFFFF;
+    --color-dark: #F6FFF8;
+    --color-light: #171A21;
+    --color-accent-dark: #F6FFF8;
+    --color-accent-light: #6B9080;
 }
 
 body {
@@ -62,7 +62,8 @@ footer {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Ranade', sans-serif;
+    font-family: 'General Sans', sans-serif;
+    font-weight: 300;
 }
 
 img, picture, video, canvas, svg {
