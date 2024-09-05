@@ -31,6 +31,10 @@
     text-transform: uppercase;
 }
 
+.blog__date {
+    text-transform: lowercase;
+}
+
 .blog__row .blog__topic, .blog__row .blog__title {
     padding: 0 1.5rem;
 }
