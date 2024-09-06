@@ -64,6 +64,7 @@ footer {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'General Sans', sans-serif;
     font-weight: 300;
+    margin-bottom: 0.75rem;
 }
 
 img, picture, video, canvas, svg {
@@ -81,8 +82,46 @@ p {
     margin-bottom:1.5rem;
 }
 
-strong {
+ul, ol {
+    margin-bottom:1.5rem;
+
+}
+
+li::marker {
     color: var(--color-accent-dark);
+}
+
+ul.two-columns {
+    columns: 2;
+}
+
+ul.three-columns {
+    columns: 3;
+}
+
+strong, b {
+    color: var(--color-accent-dark);
+}
+
+blockquote {
+    background: var(--color-light);
+    border-left: 3px solid var(--color-accent-light);
+    margin: 1.5em 1em;
+    padding: 0.5em 0.75em;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote::before {
+    color: var(--color-accent-light);
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.05em;
+    vertical-align: -0.3em;
+}
+
+blockquote p {
+    display: inline;
 }
 
 /* Scrollbar */
