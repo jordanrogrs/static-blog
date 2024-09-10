@@ -50,6 +50,10 @@
     user-select: none;
 }
 
+.post h3 {
+    font-size: var(--size-2xl)
+}
+
 .highlight-1 {
     background-color: #fcf151;
     color: #171A21;

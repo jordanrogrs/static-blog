@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>CS50x Lecture 1 - Part 1 | Jordan Rogers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="../../images/favicon-16x16.png" sizes="any">
+    <link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="../../images/favicon-48x48.png" sizes="48x48">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/modern-normalize.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/hero.css">
+    <link rel="stylesheet" href="../../css/components/blog.css">
+    <link rel="stylesheet" href="../../css/components/contact.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../../css/utils.css">
+</head>
+<body>
+<!-- DESKTOP NAV -->
+<header class="header container">
+    <nav>
+        <ul class="header__menu">
+            <li><a href="../../" class="header__link">Home</a></li>
+            <li><a href="../../#about" class="header__link">About</a></li>
+            <li><a href="../../blog" class="header__link">Blog</a></li>
+            <li><a href="../../#contact" class="header__link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- END OF DESKTOP NAV -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <nav>
+        <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
+        <ul class="mobile-nav__menu">
+            <li>
+                <a class="mobile-nav__link" href="../../">Home</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#about">About</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../blog">Blog</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle" aria-label="Toggle between light and dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
+
+ <article>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero container">
+        <div class="blog__topic">CS50, Personal Development</div>
+        <h1 id="hero__title">CS50x - Lecture 1 - Part 1.</h1>
+        <h2 id="hero__subtitle">linux, variables, and data types</h2>
+        <div class="blog__date">Published September 9th, 2024</div>
+    </section>
+
+    <!-- END OF HERO -->
+
+    <!-- BLOG POST SECTION -->
+     <section class="post container">
+        <p>Welcome to my Lecture 1 notes for CS50x 2024. Lecture 1 introduces us to programming in a real-world language called C.</p>
+        <p>While computers can only understand binary, or what we call <em>machine code</em>, humans instead write <em>source code</em>, that is code or instructions that is (hopefully) readable by other humans. There are some conventions to write code that makes it easier to read and undestand. As with all things, there is both good code, and bad code. Good code not only works and does what's intended, but is easy to read and modify, and runs efficiently.</p>
+        <p>Computers convert source code into machine code through a program called a <em>compiler</em>.
+        <h3>Good code</h3>
+        <p>This lecture focuses on writing good code. Good code is evaluated on 3 criteria:</p>
+        <ol>
+            <li><strong>Correctness:</strong> does the code actually work?</li>
+            <li><strong>Design:</strong> how efficiently does the code run?</li>
+            <li><strong>Style:</strong> is the code consistent and easy to read?</li>
+        </ol>
+        <h3>Starting to code</h3>
+        <p>If you wanted to start to code on your own, you'd probably need to install the language you want from the internet onto your computer. Then you could use a basic text editor that comes installed with your Operating System, but you'd probably also want a fancy text editor with tools for automatically formatting your code and highlighting different syntax and errors that may be present. Ideally you'd start learning an <em>integrated development environment</em> or <em>IDE</em> that has tons of tools that help you write your code and test it all in one place. Instead, what you really should do, especially just starting out is to use CS50's cloud-based IDE, that has all of the tools and resources (as well as a bunch of handy "training wheels") already installed, prepared, and ready to use. To do so, go to <a href="https://cs50.dev/" target="_blank">cs50.dev</a>.</p>
+        <p>I've used Visual Studio Code, which is Microsoft's open-source IDE, before starting this course, but by using the tools provided by CS50 I've learned how things actually work and how to utilize them efficiently so much quicker than I would have on my own. It's a really great resource, and a lot of thought and effort was put into to really streamline learning these potentially difficult concepts.</p>
+        <p>So now we're in a version of VS Code that's completely online. We now have a virtual <em>codespace</em> in the cloud running a Linux system. Most production servers today run Linux and only have a command-line interface (CLI), so it's important to get used to the commands needed to navigate a terminal rather than the traditional point and click of a graphical user interface (GUI). Here are some of the most useful commands that took me quite a while to remember:</p>
+        <ul>
+            <li><strong>cd</strong> - change directory. A directory is just a folder on your computer. One period ' . ' selects the current working directory, two periods ' .. ' selects the parent directory, and cd <i>name</i> would enter the directory with the filename 'name' </li>
+            <li><strong>cp</strong> - copy. Copy a file by giving 2 names, first the source, and second the destination, so cp <em>source_file</em> <em>destination_file</em> would copy the source_file to a new file called destination_file (if the destination doesn't exist, it'll be created. If it does, it'll be overwritten) </li>
+            <li><strong>ls</strong> - list. List all the files in the current working directory, or the directory you're currently in</li>
+            <li><strong>mkdir</strong> - make directory. Make a new directory</li>
+            <li><strong>mv</strong> - move. Move or rename a file, can be used like mv <em>old_filename</em> <em>new_filename</em></li>
+            <li><strong>rm</strong> - remove. Delete a file</li>
+            <li><strong>rmdir</strong> - remove directory. Delete a directory</li>
+        </ul>
+        <p>As you can see, computer scientists and programmers like to make everything as short as possible. No, this NEVER creates any confusion...</p>
+        <h3>First program</h3>
+        <p>To make my first program in C. I started by creating a new file. The command to create or open a file in VS Code is simply <strong>code</strong> <em>filename.extension</em>. When using the terminal like this, it's important to include the extension of the file, in this case .c. The first program, and usually the first program any programmer makes in a new language is hello.c. So, <strong>code</strong> <em>hello.c</em> was my very first step in learning C.</p>
+        <p>Now the fun begins, here is the very first program most people make:</p>
+        <code>#include &lt;stdio.h&gt;<br><br>int main(void)<br>{<br><pre>   printf("hello, world\n");</pre>}</code>
+        <p>The first line is a header file, and instructs the compiler to include the file <em>&lt;stdio.h&gt;</em>, or <em><b>st</b>andar<b>d</b> <b>i</b>nput <b>o</b>utput</em>. This allows us to access the function <em>printf</em> which will write out what's inside it to the screen. Header files link to <em>libraries</em>, which is code that has already been written that we can use to make our life easier, to not reinvent the wheel as they say.</p>
+        <p>The next line, <em>int main(void)</em>, isn't explained yet, as it requires a bit more theoretical knowledge of computer systems and how programs operate to understand. For now, I'll just say that it's calling the main function of the whole program to run.</p>
+        <p><em>printf</em> as I said before, prints whatever is inside the (  ) and inside the "  " within the brackets. So, you can see, it should say <em>hello, world</em>. But there's a special character inside the quotes with the message, the backslash \n. Backslash in C is a special character called a <strong>escape sequence</strong> that just tells the compiler to expect specific instructions afterwards. In this case <em>\n</em> tells the computer to write a newline character, which moves our cursor down a line. This makes the program look more aesthetically pleasing.</p>
+        <p>After every statement in C, we end with a semicolon ; which tells the compiler that the statement is finished.</p>
+        <p>Now that the program is written we can run it in our environment by going back to the terminal, entering <strong>make</strong> <em>hello</em>. Which compiles our source code into an executable file in machine code. Now it can be run by entering <em>./hello</em></p>
+        <p>Let's see the result:</p>
+        <img src="../../images/blog/hello-program.jpg">
+        <h3>Variables</h3>
+        <p>Now that we have a basic program down. We need variables to start writting more useful programs. Just like in math, a variable is like an empty box where we can store different information in, and once it's stored, we're able to perform different operations or functions with the information inside.</p>
+        <p>The next program is just a modification of the first, but this time with a new <strong>name</strong> variable so we can dynamically change the message depending on the user's input. Let's see what that looks like:</p>
+        <img src="../../images/blog/hello-program-v2.jpg">
+        <p>This time I also included the &lt;cs50.h&gt; header file, or cs50 library, so I can use the handy <em>get_string(  )</em> function to prompt the user for a string, which is stored in the variable <em>name</em> of the type <strong>string</strong> (another helpful tool from the cs50 library). Now, instead of printing to the screen a static word, like world or my name Jordan, we want the message to change depending on what's inside the variable <em>name</em>. To do this, we print <em>%s</em>, another special character that tells the compiler to replace that part with a string which we declare outside the quotation marks.</p>
+        <h3>Data types</h3>
+        <p>A few important rules on syntax from these changes: First, when you create, or declare, a variable in C, you need to tell the computer what type of data you're storing. Here's a list of the most common data types:</p>
+        <ul>
+            <li><strong>bool</strong> - boolean value, named after the Mathematician George Boole, is either <strong>true</strong> or <strong>false</strong></li>
+            <li><strong>char</strong> - a single character</li>
+            <li><strong>float</strong> - a floating point number, any number with a decimal, for example: 1.5</li>
+            <li><strong>double</strong> - a floating point number that takes up twice as much space, 64 bits (up from 32 bits)</li>
+            <li><strong>int</strong> - an integer, or whole number</li>
+            <li><strong>long</strong> - an integer that takes up twice as much space, 64 bits</li>
+            <li><strong>string</strong> - a string for now, this one is special to &lt;cs50.h&gt;</li>
+        </ul>
+        <p>Next is the use of <strong>format codes</strong>. The format specifier <em>%</em> tells the function to prepare to receive a variable. Here are the matching format codes for the corresponding data types:</p>
+        <ul>
+            <li>%c - char</li>
+            <li>%f - float</li>
+            <li>%lf - double, or long float</li>
+            <li>%i - int</li>
+            <li>%li - long, or long integer</li>
+            <li>%s - string</li>
+        </ul>
+        <p>When programming in C, it's the job of the programmer to tell the computer exactly what they're looking for and where, so it's important to keep in mind what type of variable you want to use to declare and use it properly.</p>
+        <p>I didn't realize just how much information is covered in each of these lectures. As such, I'll be breaking each one into multiple parts. The next part will cover conditionals, loops, and custom functions to simplify our code.</p>
+
+    </section>
+
+    <!-- END OF BLOG POST -->
+
+
+ </article>
+
+
+
+<!-- OTHER POSTS SECTION -->
+
+<section id="blog" class="blog container section">
+    <h2 class="heading__primary">Other Posts.</h2>
+    <div class="blog__row">
+        <a href="/blog/cs50/cs50-week-0" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x 2024 Week 0 YT Thumbnail.jpg" alt="CS50x Week 0">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">This is CS50.</div>
+            </div>
+        </a>
+        <a href="/blog/personal/introduction" class="blog__article">
+            <div>
+                <img src="../../images/blog/hi-my-name-is-jordan.jpg" alt="Jordan Rogers">
+                <div class="blog__topic">Personal Development, About Me</div>
+                <div class="blog__title heading__secondary">My Journey: Introduction.</div>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<!-- END OF OTHER POSTS -->
+
+<!-- FOOTER SECTION -->
+<footer class="footer container section">
+    <h3 class="footer__title"> Jordan Rogers </h3>
+</footer>
+<!-- END OF FOOTER -->
+
+<script defer src="../../js/mobile-nav.js"></script>
+<script defer src="../../js/dark-mode.js"></script>
+</body>
+</html>

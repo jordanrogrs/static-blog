@@ -124,6 +124,16 @@ blockquote p {
     display: inline;
 }
 
+code {
+    font-family: sans-serif;
+    background-color: #1e1e1e;
+    color: #cac8c8;
+    display: block;
+    padding: 1.5em;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+}
+
 /* Scrollbar */
 body::-webkit-scrollbar {
     width: 2px;
