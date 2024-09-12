@@ -124,6 +124,14 @@ blockquote p {
     display: inline;
 }
 
+blockquote.indent {
+    quotes: none;
+}
+
+blockquote.indent p {
+    display: inline-block;
+}
+
 code {
     font-family: sans-serif;
     background-color: #1e1e1e;

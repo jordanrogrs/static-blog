@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>CS50x Lecture 1 - Part 1 | Jordan Rogers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="../../images/favicon-16x16.png" sizes="any">
+    <link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="../../images/favicon-48x48.png" sizes="48x48">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/modern-normalize.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/hero.css">
+    <link rel="stylesheet" href="../../css/components/blog.css">
+    <link rel="stylesheet" href="../../css/components/contact.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../../css/utils.css">
+</head>
+<body>
+<!-- DESKTOP NAV -->
+<header class="header container">
+    <nav>
+        <ul class="header__menu">
+            <li><a href="../../" class="header__link">Home</a></li>
+            <li><a href="../../#about" class="header__link">About</a></li>
+            <li><a href="../../blog" class="header__link">Blog</a></li>
+            <li><a href="../../#contact" class="header__link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- END OF DESKTOP NAV -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <nav>
+        <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
+        <ul class="mobile-nav__menu">
+            <li>
+                <a class="mobile-nav__link" href="../../">Home</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#about">About</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../blog">Blog</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle" aria-label="Toggle between light and dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
+
+ <article>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero container">
+        <div class="blog__topic">CS50, Personal Development</div>
+        <h1 id="hero__title">CS50x - Lecture 1 - Part 2.</h1>
+        <h2 id="hero__subtitle">conditionals, loops, and operators</h2>
+        <div class="blog__date">Published September 9th, 2024</div>
+    </section>
+
+    <!-- END OF HERO -->
+
+    <!-- BLOG POST SECTION -->
+     <section class="post container">
+        <p>Last week I went over the first part of CS50's Lecture 1, taking a look at linux commands, variables, and data types in C. I went over my very first program in C, hello.c, and included quite a bit of syntax and instructions for making it... and only it. I'm still figuring out the format I want these posts to be, but I'd like to talk more about ideas and concepts, putting them into my own words, rather than syntax and instruction. Let's try something a little different.</p>
+        <h2>Conditionals</h2>
+        <p>A conditional is exactly what it sounds like. It tells the computer to do something when something is true. For example: <em>if</em> you want to check if a problem has the correct solution, or if a number (usually a variable) is bigger or smaller than another number, you'd use a conditional. In C, conditionals are wrapped in brackets <em>(  )</em>, and notice the first word in my previous example - <strong>if</strong>. So you'd tell the computer to do something <strong>if</strong> (<em>something is true</em>). Then, after you can add more specific conditions with <strong>else if</strong>, and usually to cap it off a general condition of <strong>else</strong> that catches any other value.</p>
+        <p>You can also combine conditionals, that is to say, do something if <em>X</em> is true <strong>AND</strong>/<strong>OR</strong> <em>Y</em> is true - <strong>&&</strong> and <strong>||</strong> in C respectively. Alternatively, you can preface a condition with a <em>bang</em> <strong>!</strong> which is the logical <strong>not</strong> operator, and flips the condition around, so <strong>!=</strong> means <strong>not true</strong>, whereas <strong>==</strong> means true.</p>
+        <h2>Loops</h2>
+        <p>These go hand in hand with conditionals, in fact, you can't make a loop without a condition. As the name implies, a loop just tells the computer to do something over and over again. There are two types of loops: <strong>while</strong> and <strong>for</strong> loops.</p>
+        <p>A <strong>while</strong> loop tells the computer to repeat the instructions while something is true. In C, this looks like: <strong>while</strong> (<em>whatever is in the brackets is true</em>). Usually you would initialize a counter variable above a while loop like <em>int i = 0;</em> then tell the computer to repeat something <strong>while</strong> (<em>i < n number of times - let's say 3</em>), then inside the loop after you do what you want to, you'd add 1 to your <em>i</em> variable. In this example, the loop would run 3 times. </p>
+        <ul style="list-style: none;"><li>Why 3 times if you're saying while i is <em>less than</em> 3? Remember that computers always count from 0, so the loop would run when:
+        <ul style="columns: 3; max-width: 30ch;"><li>i = 0</li><li>i = 1</li><li>i = 2</li></ul>
+        </li>
+        <li>So, while i is still less than 3, we ran 0, 1, 2, which is 3 times.</li></ul>
+        <p>A <strong>for</strong> loop is slightly different in that it tells the computer to do something a certain number of times. They can usually be interchanged, and programmers tend to use whatever they're more comfortable with. But the biggest difference between the two is that <strong>for</strong> loops run the amount of times you tell them to, whereas <strong>while</strong> loops run until something happens.</p>
+        <p>In C you'd usually write a for loop in one line (that I've learned), which is another consideration for reading, styling, and understanding your code. It would look something like this: <strong>for</strong> (<em>initialize variable(s)</em>; <em>tell the loop how many times to run</em>; <em>do something after the loop is done (like i++)</em>).</p>
+        <code>for (int i = 0; i < 3; i++)<br>{<br><pre>    do_something( )</pre>}</code>
+        <p>This for loop would do something 3 times.</p>
+        <h2>Operators</h2>
+        <p>Operators are quite simple. Like a calculator, they are mathematical operations that the computer knows how to do. Here's a list:</p>
+        <ul>
+            <li><strong>+</strong> for addition</li>
+            <li><strong>-</strong> for subtraction</li>
+            <li><strong>*</strong> for multiplication</li>
+            <li><strong>/</strong> for division</li>
+            <li><strong>%</strong> for remainder. This one is quite new, and it took a couple minutes to wrap my head around, it's called a <em>modulo</em> operator.</li>
+        </ul>
+        <p>The <em>modulo operator</em> gives you the remainder after you divide two numbers together, called the <em>modulus</em>. For example, if you divide 6 / 2 = 3. Which is a whole number. So, 6 % 2 = 0, because there is no remainder in the operation. But 5 % 2 = 1, because 2 completely fits into 5 twice and you're left with 1 remaining. This is great for finding even numbers among other things.</p>
+        <h2>Abstraction</h2>
+        <p>Arguably one of the most important ideas in computer science, abstraction is the process of <strong>simplifying code</strong>. It can be defined as <em>"the process of considering something independently of its associations"</em> or <em>"the process of removing something"</em>. This means, in effect, abstracting code, or more specifically, abstracting a function is removing that code from the main code, and writing an independent, smaller piece of code to solve a smaller problem. </p>
+        <p>This is huge in cloud computing, CI/CD (continuous integration and continuous deployment), and professional environments where potentially hundreds of people are all working on the same project. So instead of all working on top of each other and potentially duplicating or ruining their code, maybe one person is working on a button over here, while another person is developing a login screen over there, and yet a third group is working on security somewhere else. Then, you build a program from all its separate but connected parts.</p>
+        <p>I'm still working to get into the habit of thinking and problem-solving through abstraction. To solve computer problems, and more importantly real-world problems, a programmer has to really break down or <strong>abstract</strong> every problem into smaller and smaller pieces, then write an <strong>algorithm</strong> - specific instructions that the computer can follow.</p>
+        <p>There's so much more interesting stuff in this lecture. I didn't even talk about <em>integer overflow</em>, <em>floating-point imprecision</em>, or how computers are literally running out of time! I highly recommend watching the lecture yourself if you get a chance. But alas, my time is also running out, so goodbye for now.</p>
+    </section>
+
+    <!-- END OF BLOG POST -->
+
+
+ </article>
+
+
+
+<!-- OTHER POSTS SECTION -->
+
+<section id="blog" class="blog container section">
+    <h2 class="heading__primary">Other Posts.</h2>
+    <div class="blog__row">
+        <a href="/blog/cs50/cs50-lecture-1-part-1" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x 2024 Lecture 1 YT Thumbnail.jpg" alt="CS50x Week 0">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 1.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-week-0" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x 2024 Week 0 YT Thumbnail.jpg" alt="CS50x Week 0">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">This is CS50.</div>
+            </div>
+        </a>
+        <a href="/blog/personal/introduction" class="blog__article">
+            <div>
+                <img src="../../images/blog/hi-my-name-is-jordan.jpg" alt="Jordan Rogers">
+                <div class="blog__topic">Personal Development, About Me</div>
+                <div class="blog__title heading__secondary">My Journey: Introduction.</div>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<!-- END OF OTHER POSTS -->
+
+<!-- FOOTER SECTION -->
+<footer class="footer container section">
+    <h3 class="footer__title"> Jordan Rogers </h3>
+</footer>
+<!-- END OF FOOTER -->
+
+<script defer src="../../js/mobile-nav.js"></script>
+<script defer src="../../js/dark-mode.js"></script>
+</body>
+</html>

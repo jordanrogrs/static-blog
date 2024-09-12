@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Blog - Jordan Rogers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="../../images/favicon-16x16.png" sizes="any">
+    <link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="../../images/favicon-48x48.png" sizes="48x48">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/modern-normalize.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/hero.css">
+    <link rel="stylesheet" href="../../css/components/blog.css">
+    <link rel="stylesheet" href="../../css/components/contact.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../../css/utils.css">
+</head>
+<body>
+<!-- DESKTOP NAV -->
+<header class="header container">
+    <nav>
+        <ul class="header__menu">
+            <li><a href="../../" class="header__link">Home</a></li>
+            <li><a href="../../#about" class="header__link">About</a></li>
+            <li><a href="../../blog" class="header__link">Blog</a></li>
+            <li><a href="../../#contact" class="header__link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- END OF DESKTOP NAV -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <nav>
+        <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
+        <ul class="mobile-nav__menu">
+            <li>
+                <a class="mobile-nav__link" href="../../">Home</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#about">About</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../blog">Blog</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle" aria-label="Toggle between light and dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
+
+ <article>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero container">
+        <div class="blog__topic">CS50, Personal Development</div>
+        <h1 id="hero__title">CS50x - Problem Set 4</h1>
+        <h2 id="hero__subtitle"></h2>
+        <div class="blog__date">Published September th, 2024</div>
+    </section>
+
+    <!-- END OF HERO -->
+
+    <!-- BLOG POST SECTION -->
+     <section class="post container">
+        <p>Notes on working through problem set 4.</p>
+        <blockquote class="indent">
+            <p><a href="https://docs.fileformat.com/audio/wav/" target="_blank">WAV files</a> are a common file format for representing audio. WAV files store audio as a sequence of “samples”: numbers that represent the value of some audio signal at a particular point in time. WAV files begin with a 44-byte “header” that contains information about the file itself, including the size of the file, the number of samples per second, and the size of each sample. After the header, the WAV file contains a sequence of samples, each a single 2-byte (16-bit) integer representing the audio signal at a particular point in time.</p>
+            <p>Scaling each sample value by a given factor has the effect of changing the volume of the audio. Multiplying each sample value by 2.0, for example, will have the effect of doubling the volume of the origin audio. Multiplying each sample by 0.5, meanwhile, will have the effect of cutting the volume in half.</p>
+            <p>In a file called volume.c in a folder called volume, write a program to modify the volume of an audio file.</p>
+        </blockquote>
+        <p>I start by downloading the files that CS50 has provided for the problem. Which will give me this code:</p>
+        <code>
+            <span style="color: #449e48;">// Modifies the volume of an audio file</span><br><br>
+            #include &lt;stdint.h&gt;<br>
+            #include &lt;stdio.h&gt;<br>
+            #include &lt;stdlib.h&gt;<br><br>
+            
+            <span style="color: #449e48;">// Number of bytes in .wav header</span><br>
+            const int HEADER_SIZE = 44;<br><br>
+            
+            int main(int argc, char *argv[])<br>
+            {<br>
+            <pre style="color: #449e48;">    // Check command-line arguments</pre>
+            <pre>    if (argc != 4)</pre>
+            <pre>    {</pre>
+            <pre>        printf("Usage: ./volume input.wav output.wav factor\n");</pre>
+            <pre>        return 1;</pre>
+            <pre>    }</pre>
+            
+            <pre style="color: #449e48;">    // Open files and determine scaling factor</pre>
+            <pre>    FILE *input = fopen(argv[1], "r");</pre>
+            <pre>    if (input == NULL)</pre>
+            <pre>    {</pre>
+            <pre>        printf("Could not open file.\n");</pre>
+            <pre>        return 1;</pre>
+            <pre>    }</pre><br>
+            
+            <pre>    FILE *output = fopen(argv[2], "w");</pre>
+            <pre>    if (output == NULL)</pre>
+            <pre>    {</pre>
+            <pre>        printf("Could not open file.\n");</pre>
+            <pre>        return 1;</pre>
+            <pre>    }</pre><br>
+            
+            <pre>    float factor = atof(argv[3]);</pre><br>
+            
+            <pre style="color: #449e48;">    // TODO: Copy header from input file to output file</pre><br>
+            
+            <pre style="color: #449e48;">    // TODO: Read samples from input file and write updated data to output file</pre><br>
+            
+            <pre style="color: #449e48;">    // Close files</pre>
+            <pre>    fclose(input);</pre>
+            <pre>    fclose(output);</pre>
+            }
+            </code>
+            <h2>Implementation details</h2>
+            <p>Complete volume.c to change the volume of a sound file by a give factor.</p>
+            <ul>
+                <li>The program should accept 3 command line arguments:
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>input</strong> - name of original audio file</li>
+                        <li><strong>output</strong> - name of new audio file being generated</li>
+                        <li><strong>factor</strong> - amount by which the volume should be scaled</li>
+                    </ul>
+                </li>
+                <li>The program should first read the header from the input file and write it to the output file.</li>
+                <li>The program should then read the rest of the data from the WAV file, one 16-bit (2-byte) sample at a time. Multiply each sample by the factor and write the new sample to the output file.</li>
+                <li>Your program if it uses malloc, must not leak any memory.</li>
+            </ul>
+            <h2>Implementation</h2>
+            <p>First things first, I need to go through the code and see if I understand it. In this case, everything looks good, it has an error handler at the top for incorrect command-line arguments, then it opens each of the files specified by the user. But 2 lines stand out to me:</p>
+            <code>const int HEADER_SIZE = 44;</code>
+            <code>float factor = atof(argv[3]);</code>
+            <p>For HEADER_SIZE, I now know that the first 44 bytes should be copied without being modified. And for factor I see some new syntax that I'm not completely familiar with: <em>atof()</em>. So, I go to the <a href="https://manual.cs50.io/" target="_blank">documentation</a> to look it up. There I see a simple definition, <strong>atof</strong> converts a string to a float. So now I know that this line is converting the input from the command-line argument to a variable that I can use to perform calculations with.</p>
+            <p>On to the <strong>TODO</strong>. But before I start, following along with the problem's notes, I learned about 2 important new data types: <strong>uint8_t</strong> and <strong>int16_t</strong> which are 1-byte and 2-bytes respectivelly. Now I know enough to start copying the header from the input file to the output file.</p>
+            <h3>Copy the header</h3>
+            <p>To start I need to assign some new memory for the program to store the header in a <strong>buffer</strong> so it can copy it correctly, our read command will copy the data into the buffer, then the write command will copy the data from the buffer to the output file. To do this we create an array of bytes, which is an array of the data type <strong>uint8_t</strong> called header. Now we know how big the header is from the <em>HEADER_SIZE</em> variable, so I'll pass that as the parameter:</p>
+            <code>uint8_t header[HEADER_SIZE];</code>
+            <p>Now I can read and write the header all at once from the commands learned in the lecture:</p>
+            <code>fread(header, HEADER_SIZE, 1, input);<br>
+                fwrite(header, HEADER_SIZE, 1, output);</code>
+            <p>The parameters for the functions above in order are: the address of the first byte of memory to read, the size (in bytes) of the data we want to access, number of the size(s) to write at once, and the pointer to the open file that we want to read/write to. Or, if we're being more technical from the <a href="https://manual.cs50.io/3/fwrite" target="_blank">manual pages</a>:</p> <code>size_t fwrite(void *ptr, size_t size, size_t nmemb, FILE *stream);</code>
+            <h3>Copy the samples</h3>
+            <p>For the samples it'll be a little bit different, this time we want to modify each sample before writing it, so we'll use a loop. We still start the same way however, by assigning a buffer to store the data so we can modify and use it. But the samples in the WAV file are not just bytes, they're 2-bytes each, so instead of using <strong>uint8_t</strong> we'll store the sample in a buffer that's of the data type <strong>int16_t</strong>. Assigning it looks like this:</p>
+            <code>int16_t buffer;</code>
+            <p>Now, let's write a loop to read each sample 1 at a time:</p>
+            <code>while (fread(&buffer, sizeof(int16_t), 1, input) != 0)<br>{<br><br>}</code>
+            <p>Before we write it, let's modify the sample by multiplying it by our factor variable:</p>
+            <code>while (fread(&buffer, sizeof(int16_t), 1, input) != 0)<br>{<br>buffer *= factor;<br><br>}</code>
+            <p>And lastly, write the modified buffer to the new file:</p>
+            <code>while (fread(&buffer, sizeof(int16_t), 1, input) != 0)<br>{<br>buffer *= factor;<br>fwrite(&buffer, sizeof(int16_t), 1, output);<br>}</code>
+            <p>And we're done! The program closes the files, so I can compile it by running <em>make volume</em> in my terminal, then test it by passing the correct command-line arguments: <em>./volume input.wav output.wav 2.5</em>, and everything looks good!</p>
+            <p>Here is my final program:</p>
+            <code>
+                <span style="color: #449e48;">// Modifies the volume of an audio file</span><br><br>
+                #include &lt;stdint.h&gt;<br>
+                #include &lt;stdio.h&gt;<br>
+                #include &lt;stdlib.h&gt;<br><br>
+                
+                <span style="color: #449e48;">// Number of bytes in .wav header</span><br>
+                const int HEADER_SIZE = 44;<br><br>
+                
+                int main(int argc, char *argv[])<br>
+                {<br>
+                <pre style="color: #449e48;">    // Check command-line arguments</pre>
+                <pre>    if (argc != 4)</pre>
+                <pre>    {</pre>
+                <pre>        printf("Usage: ./volume input.wav output.wav factor\n");</pre>
+                <pre>        return 1;</pre>
+                <pre>    }</pre>
+                
+                <pre style="color: #449e48;">    // Open files and determine scaling factor</pre>
+                <pre>    FILE *input = fopen(argv[1], "r");</pre>
+                <pre>    if (input == NULL)</pre>
+                <pre>    {</pre>
+                <pre>        printf("Could not open file.\n");</pre>
+                <pre>        return 1;</pre>
+                <pre>    }</pre><br>
+                
+                <pre>    FILE *output = fopen(argv[2], "w");</pre>
+                <pre>    if (output == NULL)</pre>
+                <pre>    {</pre>
+                <pre>        printf("Could not open file.\n");</pre>
+                <pre>        return 1;</pre>
+                <pre>    }</pre><br>
+                
+                <pre>    float factor = atof(argv[3]);</pre><br>
+                
+                <pre style="color: #449e48;">    // Copy header from input file to output file</pre>
+                <pre>    uint8_t header[HEADER_SIZE];</pre>
+                <pre>    fread(header, HEADER_SIZE, 1, input);</pre>
+                <pre>    fwrite(header, HEADER_SIZE, 1, input);</pre><br>
+                <pre style="color: #449e48;">    // Read samples from input file and write updated data to output file</pre>
+                <pre>    int16_t buffer;</pre>
+                <pre>    while (fread(&buffer, sizeof(int16_t), 1, input) != 0)</pre>
+                <pre>    {</pre>
+                <pre>        buffer *= factor;</pre>
+                <pre>        fwrite(&buffer, sizeof(int16_t), 1, output);</pre>
+                <pre>    }</pre><br>
+                <pre style="color: #449e48;">    // Close files</pre>
+                <pre>    fclose(input);</pre>
+                <pre>    fclose(output);</pre>
+                }
+                </code>
+    </section>
+
+    <!-- END OF BLOG POST -->
+
+
+ </article>
+
+
+
+<!-- OTHER POSTS SECTION -->
+
+<section id="blog" class="blog container section">
+    <h2 class="heading__primary">Other Posts.</h2>
+    <div class="blog__row">
+        <a href="/blog/cs50/cs50-lecture-1-part-1" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_1_YT_Thumbnail.jpg" alt="CS50x Lecture 1">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 1.</div>
+            </div>
+        </a>
+        <a href="/blog/personal/introduction" class="blog__article">
+            <div>
+                <img src="../../images/blog/hi-my-name-is-jordan.jpg" alt="Jordan Rogers">
+                <div class="blog__topic">Personal Development, About Me</div>
+                <div class="blog__title heading__secondary">My Journey: Introduction.</div>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<!-- END OF OTHER POSTS -->
+
+<!-- FOOTER SECTION -->
+<footer class="footer container section">
+    <h3 class="footer__title"> Jordan Rogers </h3>
+</footer>
+<!-- END OF FOOTER -->
+
+<script defer src="../../js/mobile-nav.js"></script>
+<script defer src="../../js/dark-mode.js"></script>
+</body>
+</html>
