@@ -78,6 +78,10 @@
     padding: 0 4px;
 }
 
+.comment {
+    color: #449e48;
+}
+
 /* xl */
 @media (min-width: 1280px) {
     .blog__row {
