@@ -161,7 +161,7 @@
         </code>
         <h2>Back to main</h2>
         <p>Now I know how many blocks and spaces to print, and I have the functions to print them for me, I need one more loop to go through the total height of the pyramid.</p>
-        <p>Our blocks (b) always starts at 1 and they also can't go past n, because that's the max height of the pyramic, so let's use a while loop to print the correct pyramid size: </p>
+        <p>Our blocks (b) always starts at 1 and they also can't go past n, because that's the max height of the pyramid, so let's use a while loop to print the correct pyramid size: </p>
         <code>
             int b = 1;<br>
             while (b <= n)<br>
@@ -172,7 +172,7 @@
             <pre>   b++;</pre>
             }
         </code>
-        <p>A few notes on the main loop: First, usually you set the limit of a loop to less than the number of times you want it to run, but that's because you usually start at 0. This time, however, I'm starting the count at 1, and I want to loop through when b = n as well. So, I set the loop to run while b <= n. Second, I moved the spaces variable into the loop, as I need to recalculate it before each run. And lastly, after printing the spaces and blocks, I increment b by 1 and the loop runs again. </p>
+        <p>A few notes on the main loop: First, usually you set the limit of a loop to less than the number of times you want it to run, but that's because you usually start at 0. This time, however, I'm starting the count at 1, and I want to loop through when b = n as well. So, I set the loop to run <strong>while</strong> <em>b <= n</em>. Second, I moved the spaces variable into the loop, as I need to recalculate it before each run. And lastly, after printing the spaces and blocks, I increment b by 1 and the loop runs again. </p>
         <h2>Final program</h2>
         <img src="../../images/blog/pset1-mario-more.jpg" alt="Screenshot of my mario pyramid program and result in terminal">
     </section>
