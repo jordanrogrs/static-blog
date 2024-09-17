@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>CS50x Problem Set 1 - Credit| Jordan Rogers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="../../images/favicon-16x16.png" sizes="any">
+    <link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="../../images/favicon-48x48.png" sizes="48x48">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/modern-normalize.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/hero.css">
+    <link rel="stylesheet" href="../../css/components/blog.css">
+    <link rel="stylesheet" href="../../css/components/contact.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../../css/utils.css">
+</head>
+<body>
+<!-- DESKTOP NAV -->
+<header class="header container">
+    <nav>
+        <ul class="header__menu">
+            <li><a href="../../" class="header__link">Home</a></li>
+            <li><a href="../../#about" class="header__link">About</a></li>
+            <li><a href="../../blog" class="header__link">Blog</a></li>
+            <li><a href="../../#contact" class="header__link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- END OF DESKTOP NAV -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <nav>
+        <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
+        <ul class="mobile-nav__menu">
+            <li>
+                <a class="mobile-nav__link" href="../../">Home</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#about">About</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../blog">Blog</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle" aria-label="Toggle between light and dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
+
+ <article>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero container">
+        <div class="blog__topic">CS50, Personal Development</div>
+        <h1 id="hero__title">CS50x - Problem Set 1 - Credit.</h1>
+        <h2 id="hero__subtitle">credit cards and checksums</h2>
+        <div class="blog__date">Published September 16th, 2024</div>
+    </section>
+
+    <!-- END OF HERO -->
+
+    <!-- BLOG POST SECTION -->
+     <section class="post container">
+        <h2>Problem to solve</h2>
+            <blockquote class="indent">
+                <p>A credit (or debit) card, of course, is a plastic card with which you can pay for goods and services. Printed on that card is a number that’s also stored in a database somewhere, so that when your card is used to buy something, the creditor knows whom to bill. There are a lot of people with credit cards in this world, so those numbers are pretty long: American Express uses 15-digit numbers, MasterCard uses 16-digit numbers, and Visa uses 13- and 16-digit numbers. And those are decimal numbers (0 through 9), not binary, which means, for instance, that American Express could print as many as 10^15 = 1,000,000,000,000,000 unique cards! (That’s, um, a quadrillion.)</p>
+                <p>Actually, that’s a bit of an exaggeration, because credit card numbers actually have some structure to them. All American Express numbers start with 34 or 37; most MasterCard numbers start with 51, 52, 53, 54, or 55 (they also have some other potential starting numbers which we won’t concern ourselves with for this problem); and all Visa numbers start with 4. But credit card numbers also have a “checksum” built into them, a mathematical relationship between at least one number and others. That checksum enables computers (or humans who like math) to detect typos (e.g., transpositions), if not fraudulent numbers, without having to query a database, which can be slow. Of course, a dishonest mathematician could certainly craft a fake number that nonetheless respects the mathematical constraint, so a database lookup is still necessary for more rigorous checks.</p>                    
+                <p>In a file called credit.c in a folder called credit, implement a program in C that checks the validity of a given credit card number.</p>
+            </blockquote>
+            <h2>Luhn's Algorithm</h2>
+            <p>Most cards use an algorithm invented by Hans Peter Luhn of IBM. According to Luhn’s algorithm, you can determine if a credit card number is (syntactically) valid as follows:</p>
+            <ol>
+                <li>Multiply every other digit by 2, starting with the number’s second-to-last digit, and then add those products’ digits together.</li>
+                <li>Add the sum to the sum of the digits that weren’t multiplied by 2.</li>
+                <li>If the total’s last digit is 0 (or, put more formally, if the total modulo 10 is congruent to 0), the number is valid!</li>
+            </ol>
+            <p>Example: 4 0 0 3 6 0 0 0 0 0 0 0 0 0 1 4</p>
+            <ol>
+                <li><p>Highlight every other digit, starting with the second-to-last digit:<br><span class="highlight">4</span> 0 <span class="highlight">0</span> 3 <span class="highlight">6</span> 0 <span class="highlight">0</span> 0 <span class="highlight">0</span> 0 <span class="highlight">0</span> 0 <span class="highlight">0</span> 0 <span class="highlight">1</span> 4</p>
+                    <p>Multiply every other digit by 2, and add the products' digits together (in the example below, 6*2 = 12 = 1 + 2):<br>
+                    1*2 + 0*2 + 0*2 + 0*2 + 0*2 + 6*2 + 0*2 + 4*2</p>
+                    <p>That becomes:<br>2 + 0 + 0 + 0 + 0 + 1 + 2 + 0 + 8 = 13</p>
+                </li>
+                <li>Now add the remaining digits:<br>
+                13 + 4 + 0 + 0 + 0 + 0 + 0 + 3 + 0 = 20</li>
+                <li>The last digit of 20 is 0, so the number passes the checksum.</li>
+            </ol>
+        <h2>Solving the problem</h2>
+        <p>Let's figure out what exactly I need to do. Given a variable size number, I need to count the amount of digits so I know how many times to loop through the number. Then I need to loop through each digit, multiplying every other one by 2, and add everything together. Finally, I need to check the first 1 or 2 digits as well as the total number of digits to see if it's AMEX, VISA, or MASTERCARD. </p>
+        <p>When I was solving this, I broke the process into 3 separate functions: count_digits( ), checksum( ), and check_provider( ).</p>
+        <h2>Main function</h2>
+        <p>I need to work on my pseudocode. I'm not great at starting with specific pseudocode, so let's practice here:</p>
+        <ol>
+            <li>Prompt user for number</li>
+            <li>Count the amount of digits in the number:<br><pre>    . . .</pre></li>
+            <li>Perform checksum:<br><pre>    . . .</pre></li>
+            <li><pre>    If checksum is true, check the provider</pre><pre>        . . .</pre></li>
+            <li><pre>    Else print INVALID</pre></li>
+        </ol>
+        <p>Here's the code:</p>
+        <code>
+            int main(void)<br>
+            {<br>
+            <pre class="comment">    // Prompt user for credit card number</pre>
+            <pre>    long number = get_long("Number: ");</pre><br>
+            <pre class="comment">    // Count digits</pre>
+            <pre>    int digits = count_digits(number);</pre><br>
+            <pre class="comment">    // Perform checksum, check provider if true</pre>
+            <pre>    if (checksum(number, digits))</pre>
+            <pre>    {</pre>
+            <pre>        printf("%s\n", check_provider(number, digits));</pre>
+            <pre>    }</pre>
+            <pre>    else</pre>
+                <pre>    {</pre>
+                    <pre>        printf("INVALID\n");</pre>
+                        <pre>    }</pre>
+            }
+        </code>
+        <h2>int count_digits(long number)</h2>
+        <p>To count the digits, I need to start a count, then use a <strong>while</strong> loop to keep dividing the number by 10 (thereby removing the last digit every time) until it hits 0.</p>
+        <p>Let's put that into pseudocode:</p>
+        <ol>
+            <li>Start a count</li>
+            <li>While the number is greater than 0:</li>
+            <li><pre>    Divide number by 10</pre></li>
+            <li><pre>    Add 1 to count</pre></li>
+            <li>Return count of the digits</li>
+        </ol>
+        <p>And the code:</p>
+        <code>
+            int count_digits(long number)<br>
+            {<br>
+            <pre class="comment">    // Count the number "c" of digits</pre>
+                <pre>    int c = 0;</pre>
+                    <pre>    while (number > 0)</pre>
+                        <pre>    {</pre>
+                            <pre>        number /= 10;</pre>
+                                <pre>        c++;</pre>
+                                    <pre>    }</pre>
+                                        <pre>    return c;</pre>
+            }
+        </code>
+        <h2>bool checsum(long number, int digits)</h2>
+        <p>This one is a bit trickier, we need to multiply every other digit starting at the last one. Let me put it into pseudocode:</p>
+        <ol>
+            <li>Start an empty array to store the digits</li>
+            <li>Start a sum at 0</li>
+            <li>Counting backwards, go through each digit one at a time</li>
+            <li><pre>    if the digit is an even index, multiply it by 2</pre></li>
+            <li><pre>        if the product is larger than 10, add the digits separately</pre></li>
+            <li><pre>        else add the product to the sum</pre></li>
+            <li><pre>    else add digit to sum</pre></li>
+            <li>if last digit of sum is 0, return true</li>
+            <li>else return false</li>
+        </ol>
+        <p>Now, to do this, I'll be taking advantage of <em>% 10</em> and <em>/ 10</em> with the base-10 system. <em>Modulo 10</em> gives me the last digit of a number, and <em>dividing by 10</em> removes the last digit.</p>
+        <p>Here's the code:</p>
+        <code>
+            bool checksum(long number, int digits)<br>
+        {<br>
+            <pre class="comment">    // Create an array to manipulate each digits</pre>
+            <pre>    int array[digits];</pre><br>
+
+            <pre class="comment">    // Start a sum variable</pre>
+            <pre>    int sum = 0;</pre>
+            <pre>    for (int i = digits - 1; i >= 0; i--)</pre>
+            <pre>    {</pre>
+                <pre>        if ((digits - i) % 2 == 0)</pre>
+                <pre>        {</pre>
+                    <pre>            array[i] = (number % 10) * 2;</pre>
+                    <pre>            if (array[i] / 10 > 0)</pre>
+                    <pre>            {</pre>
+                        <pre>                array[i] = (array[i] % 10) + (array[i] / 10);</pre>
+                        <pre>            }</pre>
+                    <pre>            sum += array[i];</pre>
+                    <pre>        }</pre>
+                <pre>        else</pre>
+                <pre>        {</pre>
+                    <pre>            array[i] = number % 10;</pre>
+                    <pre>            sum += array[i];</pre>
+                    <pre>        }</pre>
+                <pre>        number /= 10;</pre>
+                <pre>    }</pre>
+            <pre>    if (sum % 10 == 0)</pre>
+            <pre>    {</pre>
+                <pre>        return true;</pre>
+                <pre>    }</pre>
+            <pre>    else</pre>
+            <pre>    {</pre>
+                <pre>        return false;</pre>
+        <pre>    }</pre>
+        }
+        </code>
+
+    <p>This one's quite a bit more complicated, so let me explain a couple lines:</p>
+    <ul>
+        <li>In the <strong>for</strong> loop, I initialize i at digits - 1, so I can access the digits in reverse order. I realize now that this is kind of unnecessary, I just need to flip the <strong>if</strong> statement to be <em>(digits - i) % 2 != 0</em> to multiply array[1], array[3], etc. by 2. But, this was how my brain made sense of it when writing the program, and either way works (Which is one of the lessons I learned, that there are multiple ways to solve every problem).</li>
+        <li>We're targeting the even index numbers to multiply by 2 with an <strong>if</strong> statement. If that's the case, then I'm storing the digit * 2 in array[i]</li>
+        <li>If the digit * 2 is greater than 10, then the number in the array becomes the (product / 10 - or the first digit) + (product % 10 - or the second digit).</li>
+        <li>Then I add the product to the sum. All other digits are added to the sum as is.</li>
+        <li>The last check is just if the last digit of the total sum is 0.</li>
+    </ul>
+    <h2>string check_provider(long number, int digits)</h2>
+    <p>Last function, here's the pseudocode:</p>
+    <ol>
+        <li>Get first digit</li>
+        <li>Get second digit</li>
+        <li>Combine first and second to get first 2 digits</li>
+        <li>If first digit is 4 AND total digits are 13 OR 16, print VISA</li>
+        <li>Else if first digits are 34 OR 37 AND total digits are 15, print AMEX</li>
+        <li>Else if first digits are 51-55 AND total digits are 16, print MASTERCARD</li>
+        <li>Else print INVALID</li>
+    </ol>
+    <p>Here's the code:</p>
+    <code>
+        string check_provider(long number, int digits)<br>
+{<br>
+    <pre class="comment">    // Get first digit</pre>
+    <pre>    int a = number / (long) pow(10, digits - 1);</pre><br>
+    <pre class="comment">    // Get second digit</pre>
+    <pre>    int b = (number / (long) pow(10, digits - 2)) % 10;</pre><br>
+    <pre class="comment">    // Concatenate first and second digit by casting as strings</pre>
+    <pre>    char str_a[2], str_b[2], str_c[2];</pre>
+    <pre>    sprintf(str_a, "%i", a);</pre>
+    <pre>    sprintf(str_b, "%i", b);</pre>
+    <pre>    sprintf(str_c, "%s%s", str_a, str_b);</pre>
+    <pre>    int c = atoi(str_c);</pre><br>
+    <pre class="comment">    // Check which provider it is</pre>
+    <pre>    if (a == 4 && (digits == 13 || digits == 16))</pre>
+    <pre>    {</pre>
+        <pre>        return "VISA";</pre>
+        <pre>    }</pre>
+    <pre>    else if ((c == 34 || c == 37) && digits == 15)</pre>
+    <pre>    {</pre>
+        <pre>        return "AMEX";</pre>
+        <pre>    }</pre>
+    <pre>    else if ((c == 51 || c == 52 || c == 53 || c == 54 || c == 55) && digits == 16)</pre>
+    <pre>    {</pre>
+        <pre>        return "MASTERCARD";</pre>
+        <pre>    }</pre>
+    <pre>    else</pre>
+    <pre>    {</pre>
+        <pre>        return "INVALID";</pre>
+<pre>    }</pre>
+}
+    </code>
+    <p>Here, to get the first and second digits, I'm dividing the number by 10<sup>digits - 1</sup> and 10<sup>digits - 2</sup> respectively. Then to get the first two together as a separate integer (so I can use == comparisons), first I needed to cast them as strings, then combine the two strings into a third placeholder, and finally use the atoi( ) function to convert the string into an integer. From there, the <strong>if</strong> and <strong>else if</strong> statements are very straightforward.</p>
+    <p>And there you have it, my credit program works. After reviewing it and writting this all out, I can see a few places where I can simplify the code a little bit, making it easier to read and more logical, which I think is a really good thing, since it shows I'm improving my programming skills.</p>
+    </section>
+
+    <!-- END OF BLOG POST -->
+
+
+ </article>
+
+
+
+<!-- OTHER POSTS SECTION -->
+
+<section id="blog" class="blog container section">
+    <h2 class="heading__primary">Other Posts.</h2>
+    <div class="blog__row">
+        <a href="/blog/cs50/cs50-lecture-1-part-2" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_1_Part_2.jpg" alt="CS50x Lecture 1 - Part 2">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 2.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-lecture-1-part-1" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_1_Part_1.jpg" alt="CS50x Lecture 1 - Part 1">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 1.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-week-0" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x 2024 Week 0 YT Thumbnail.jpg" alt="CS50x Week 0">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">This is CS50.</div>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<!-- END OF OTHER POSTS -->
+
+<!-- FOOTER SECTION -->
+<footer class="footer container section">
+    <h3 class="footer__title"> Jordan Rogers </h3>
+</footer>
+<!-- END OF FOOTER -->
+
+<script defer src="../../js/mobile-nav.js"></script>
+<script defer src="../../js/dark-mode.js"></script>
+</body>
+</html>

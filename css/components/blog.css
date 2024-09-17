@@ -54,6 +54,12 @@
     font-size: var(--size-2xl)
 }
 
+.highlight {
+    background-color: #fcf151;
+    color: #171A21;
+    padding: 0 4px;
+}
+
 .highlight-1 {
     background-color: #fcf151;
     color: #171A21;

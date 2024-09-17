@@ -73,6 +73,10 @@ img, picture, video, canvas, svg {
     user-select: none;
 }
 
+pre {
+    font-family: 'Satoshi', sans-serif;
+}
+
 a {
     color: var(--color-accent-dark);
 }
