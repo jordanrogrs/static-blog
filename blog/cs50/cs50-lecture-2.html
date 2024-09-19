@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>CS50x Lecture 2 - Arrays | Jordan Rogers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="../../images/favicon-16x16.png" sizes="any">
+    <link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="../../images/favicon-48x48.png" sizes="48x48">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/modern-normalize.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/hero.css">
+    <link rel="stylesheet" href="../../css/components/blog.css">
+    <link rel="stylesheet" href="../../css/components/contact.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../../css/utils.css">
+</head>
+<body>
+<!-- DESKTOP NAV -->
+<header class="header container">
+    <nav>
+        <ul class="header__menu">
+            <li><a href="../../" class="header__link">Home</a></li>
+            <li><a href="../../#about" class="header__link">About</a></li>
+            <li><a href="../../blog" class="header__link">Blog</a></li>
+            <li><a href="../../#contact" class="header__link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- END OF DESKTOP NAV -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <nav>
+        <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
+        <ul class="mobile-nav__menu">
+            <li>
+                <a class="mobile-nav__link" href="../../">Home</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#about">About</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../blog">Blog</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle" aria-label="Toggle between light and dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
+
+ <article>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero container">
+        <div class="blog__topic">CS50, Personal Development</div>
+        <h1 id="hero__title">CS50x - Lecture 2 - Arrays.</h1>
+        <h2 id="hero__subtitle">compiling, arrays, storage, and more</h2>
+        <div class="blog__date">Published September 18th, 2024</div>
+    </section>
+
+    <!-- END OF HERO -->
+
+    <!-- BLOG POST SECTION -->
+     <section class="post container">
+        <p>Lecture 2 covers a lot of information more specific to the course itself than computer science. I'm going to try to hit all the main points so anyone can follow along.</p>
+        <h2>Compiling</h2>
+        <p>In CS50x, our cloud development environment is utilizing the <strong>clang</strong> compiler, or <em>c language</em>, with a handy little shorthand <em>make</em>. A compiler as we know, turns human-written source code into machine code, or binary, in 4 major steps:</p>
+        <ul>
+        <li><strong>Preprocessing:</strong> this is where any header files, denoted by the <em>#</em> are copied and pasted into the file so the program can use them later</li>
+        <li><strong>Compiling:</strong> converts the source code into assembly code</li>
+        <li><strong>Assembling:</strong> converts assembly code into machine code</li>
+        <li><strong>Linking:</strong> the libraries you've included are also converted into machine code and linked, or combined, with your main file</li>
+        </ul>
+        <p>A quick note on <em>reverse engineering</em>: it's technically possible to decompile code (proprietary code, since open-source is accessible to everyone), that is turn machine code back into source code, to reverse engineer a program. The amount of time and skill needed to do this is so high, the engineer could probably make a new program faster. So it's simply not practical to do.</p>
+        <h2>Debugging</h2>
+        <p>Sometimes... no, a lot of times the code compiles correctly, so there's no <em>syntax</em> errors, but doesn't run as expected, or do what we want. This is called a computer bug. Usually it's a flaw in the logic or you forgot to reset a variable that's used in a loop, etc. To fix these computer bugs there's a couple different options.</p>
+        <p>The quick and dirty way to debug a problem in your code is to add some <strong>printf( )</strong> functions to <em>"see what's going on"</em> so to speak. <strong>printf</strong> is your friend. This is good in a pinch, or for simpler bugs, but can get messy really quick. Instead, CS50x also comes equipped with a debugger helper function <strong>debug50</strong>, that allows us to set a break point, or a line of code to pause at, and tell the computer to process our program line by line so we can see what's going on with the variables and environment. </p>
+        <p>Another good way, that has roots in computer science's canon, is called <strong>rubber ducky debugging</strong>. Rubber ducky debugging originates from a popular story in the 1999 book <em>The Pragmatic Programmer</em>. It works by explaining to a "rubber duck" on your desk what your code does, line by line. By reviewing and verbalizing your code, any flaws in the logic or difference in what it <em>should</em> do versus what it actually does should show up.</p>
+        <h2>Memory</h2>
+        <p><strong>RAM</strong> - random access memory is storage that the computer can use immediately. You can think of memory in a computer as a grid of billions of bytes of memory. One billion bytes is one <strong>gigabyte</strong>. Your computer has a limited amount of memory, and each type of data takes up a certain amount of space, here is a list:</p>
+        <ul>
+            <li><strong>bool</strong> - 1 byte</li>
+            <li><strong>int</strong> - 4 bytes</li>
+            <li><strong>long</strong> - 8 bytes</li>
+            <li><strong>float</strong> - 4 bytes</li>
+            <li><strong>double</strong> - 8 bytes</li>
+            <li><strong>char</strong> - 1 byte</li>
+            <li><strong>string</strong> - ? bytes</li>
+        </ul>
+        <p>I hope no one gets upset if I steal the lecture slides, which make it easier to picture. Here's a memory chip on a computer's circuit board:</p>
+        <img src="../../images/blog/lecture2-memory.jpg" alt="A photo of a computer's memory on a circuit board" style="max-height:25rem;">
+        <p>We can picture a <strong>char</strong> that takes up a single byte like this:</p>
+        <img src="../../images/blog/lecture2-memory-char.jpg" alt="A graphic representation of a byte of memory" style="max-height:25rem;">
+        <p>An <strong>int</strong>, which takes up 4 bytes of memory, might look like this:</p>
+        <img src="../../images/blog/lecture2-memory-int.jpg" alt="A graphic representation of an int in memory" style="max-height:25rem;">
+
+        <h2>Arrays</h2>
+        <p>An array is a data structure made of a collection of elements of data that is stored <em>contiguously</em> in a computer's memory, that is, back-to-back. Each element in the array is the same size of memory, and can be accessed by an index or key.</p>
+        <p>For instance, an array of integers - <strong>int</strong> numbers[3] - would make an array of 3 numbers that can be accessed by their index, or location in the array. That would be numbers[0], numbers[1], and numbers[2]. Once again, remember that computers always start counting at 0. Storing data this way allows us to loop through an array to make calculations or modify the data.</p>
+        <p>A string is an array of characters. We can think of the string <em>"hello"</em>, as the characters 'h' + 'e' + 'l' + 'l' + 'o' followed by a special <strong>sentinel value</strong>, <strong>NUL</strong>, which is a byte where all the bits are 0. <strong>NUL</strong> is represented by <em>'\0'</em>. Since a string can be any number of characters (within the limit of the computer's memory), we don't actually know how many bytes it takes up. When we're creating and accessing a string, we're actually just telling the computer where the first letter of the string is in the memory. We don't explicitly tell the computer when the string ends, like an int which is exactly 4 bytes, the string itself does that. When a computer is reading a string, it goes through character by character until it hits <strong>NUL</strong>, which tells it that the string is complete.</p>
+        <p>Characters and integers can also be interchanged. For example, using <strong>ASCII</strong> we see that 'A' = 65, and 'a' = 97. So by subtracting 32 from a lowercase character, we'd get the uppercase version. Of course, there's already a library called <em>&lt;string.h&gt;</em> that already has some very useful functions for string manipulation, including: <em>strlen( )</em> to find the length of a string, <em>toupper( )</em> or <em>tolower( )</em> to convert characters to uppercase or lowercase, and <em>strcmp( )</em> to compare two strings (which will be important later) to name a few.</p>
+        <h2>On running programs</h2>
+        <p>The final two notes in this lecture are on a couple of details related to computer programs, <strong>command-line arguments</strong> and <strong>exit statuses</strong>.</p>
+        <p><strong>Command-line arguments</strong> are instructions for the program that are given at the command-line, when you execute your code. To allow your program to accept command-line arguments, you'd adjust the <em>int main( )</em> function as follows:</p>
+        <code>int main(int argc, string argv[ ])</code>
+        <p><strong>int</strong> argc is the <em>argument count</em>, or how many arguments are given.</p>
+        <p><strong>string</strong> argv[ ] is an array of strings, where each string is an <em>argument value</em>.</p>
+        <p>And finally, every program returns an <strong>exit status</strong> when it's finished running. The default exit status is 0, which means the code ran correctly and there were no errors. Alternatively, any number of errors can be programmed into the code, so if something breaks, it could for example exit early by returning 1, thereby preventing something worse from happening and alerting the user what went wrong so they or the programmer can fix it.</p>
+    </section>
+
+    <!-- END OF BLOG POST -->
+
+
+ </article>
+
+
+
+<!-- OTHER POSTS SECTION -->
+
+<section id="blog" class="blog container section">
+    <h2 class="heading__primary">Other Posts.</h2>
+    <div class="blog__row">
+        <a href="/blog/cs50/cs50-lecture-1-part-2" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_1_Part_2.jpg" alt="CS50x Lecture 1 - Part 2">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 2.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-lecture-1-part-1" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_1_Part_1.jpg" alt="CS50x Lecture 1 - Part 1">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 1.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-week-0" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x 2024 Week 0 YT Thumbnail.jpg" alt="CS50x Week 0">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">This is CS50.</div>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<!-- END OF OTHER POSTS -->
+
+<!-- FOOTER SECTION -->
+<footer class="footer container section">
+    <h3 class="footer__title"> Jordan Rogers </h3>
+</footer>
+<!-- END OF FOOTER -->
+
+<script defer src="../../js/mobile-nav.js"></script>
+<script defer src="../../js/dark-mode.js"></script>
+</body>
+</html>
