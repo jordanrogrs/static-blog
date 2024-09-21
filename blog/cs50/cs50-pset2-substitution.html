@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>CS50x Problem Set 2 - Substitution | Jordan Rogers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="../../images/favicon-16x16.png" sizes="any">
+    <link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="../../images/favicon-48x48.png" sizes="48x48">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/modern-normalize.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/hero.css">
+    <link rel="stylesheet" href="../../css/components/blog.css">
+    <link rel="stylesheet" href="../../css/components/contact.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../../css/utils.css">
+</head>
+<body>
+<!-- DESKTOP NAV -->
+<header class="header container">
+    <nav>
+        <ul class="header__menu">
+            <li><a href="../../" class="header__link">Home</a></li>
+            <li><a href="../../#about" class="header__link">About</a></li>
+            <li><a href="../../blog" class="header__link">Blog</a></li>
+            <li><a href="../../#contact" class="header__link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- END OF DESKTOP NAV -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <nav>
+        <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
+        <ul class="mobile-nav__menu">
+            <li>
+                <a class="mobile-nav__link" href="../../">Home</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#about">About</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../blog">Blog</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle" aria-label="Toggle between light and dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
+
+ <article>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero container">
+        <div class="blog__topic">CS50, Personal Development</div>
+        <h1 id="hero__title">CS50x - Problem Set 2 - Substitution.</h1>
+        <h2 id="hero__subtitle">encryption, decryption, substitution</h2>
+        <div class="blog__date">Published September 20th, 2024</div>
+    </section>
+
+    <!-- END OF HERO -->
+
+    <!-- BLOG POST SECTION -->
+     <section class="post container">
+        <h2>Problem to solve</h2>
+            <blockquote class="indent">
+                <p>In a substitution cipher, we “encrypt” (i.e., conceal in a reversible way) a message by replacing every letter with another letter. To do so, we use a key: in this case, a mapping of each of the letters of the alphabet to the letter it should correspond to when we encrypt it. To “decrypt” the message, the receiver of the message would need to know the key, so that they can reverse the process: translating the encrypt text (generally called <em>ciphertext</em>) back into the original message (generally called <em>plaintext</em>).</p>
+                <p>A key, for example, might be the string NQXPOMAFTRHLZGECYJIUWSKDVB. This 26-character key means that A (the first letter of the alphabet) should be converted into N (the first character of the key), B (the second letter of the alphabet) should be converted into Q (the second character of the key), and so forth.</p>
+                <p>A message like HELLO, then, would be encrypted as FOLLE, replacing each of the letters according to the mapping determined by the key.</p>
+                <p>In a file called substitution.c in a folder called substitution, create a program that enables you to encrypt messages using a substitution cipher. At the time the user executes the program, they should decide, by providing a command-line argument, on what the key should be in the secret message they’ll provide at runtime.</p>
+            </blockquote>
+        <h2>int main(int argc, string argv[ ])</h2>
+        <p>Let's start with the command-line argument and error handling. Here's the start to our main function:</p>
+        <code>
+            <span class="comment">// Store the length of the key in a constant variable</span><br>
+            const int KEY_LEN = 26;<br><br>
+            int main(int argc, string argv[ ])<br>
+            {<br>
+            <pre class="comment">   // If the argument count is incorrect OR the key isn't the correct length, print error</pre>
+            <pre>   if (argc != 2 || strlen(argv[1]) != KEY_LEN)</pre>
+            <pre>   {</pre>
+            <pre>       printf("Usage: ./substitution key\n");</pre>
+            <pre>       return 1;</pre>
+            <pre>   }</pre>
+        </code>
+        <p>Next I want to check that each letter is only present once. To do this I will initialize a boolean array with a true/false for each letter. Then I can loop through 26 times, each time converting the letter in the key to uppercase to make the check case-insensitive. When I see a letter, I mark it as true, and if the matching index in the checking array is already true, I can return an error.</p>
+        <code>
+            <pre class="comment">   // Initialize a boolean array to track which letters are present</pre>
+            <pre>   bool alphabet[KEY_LEN] = {false}</pre><br>
+            <pre class="comment">   // Loop through the key length</pre>
+            <pre>   for (int i = 0; i < KEY_LEN; i++)</pre>
+            <pre>   {</pre>
+            <pre class="comment">       // Check character is NOT alphabetical</pre>
+            <pre>       if (!isalpha(argv[1][i])</pre>
+            <pre>       {</pre>
+            <pre>           printf("Error: key must contain only letters.\n");</pre>
+            <pre>           return 1;</pre>
+            <pre>       }</pre><br>
+            <pre class="comment">       // Get the corresponding index for the letter in the alphabet</pre>
+            <pre>       int j = toupper(argv[1][i]) - 'A';</pre><br>
+            <pre class="comment">       // Check if the letter is already in the key</pre>
+            <pre>       if (alphabet[j])</pre>
+            <pre>       {</pre>
+            <pre>           printf("Error: key must only contain each letter once.\n");</pre>
+            <pre>           return 1;</pre>
+            <pre>       }</pre>
+            <pre class="comment">       // Otherwise letter hasn't been seen before, so mark it as seen</pre>
+            <pre>       else</pre>
+            <pre>       {</pre>
+            <pre>           alphabet[j] = true;</pre>
+            <pre>       }</pre>
+            <pre>   }</pre>
+        </code>
+        <p>Now all our checks are complete. If the key isn't provided at the command line, isn't exactly 26 characters long, isn't only alphabetical characters, or has any repeating letters, it will throw an error and return an exit status of 1. Next, we want to prompt the user for some <em>plaintext</em>, encrypt it with a key, and print the corresponding <em>ciphertext</em>. To do this we'll initialize two variables, <em>plaintext</em>, received from the user, and <em>ciphertext</em>, which will be an empty character array of the same length. Then we'll loop through the <em>plaintext</em> one character at a time, assigning the corresponding <em>ciphertext</em> character after running it through a new <em>encrypt( )</em> function. Which looks like this:</p>
+        <code>
+            <pre class="comment">   // Prompt the user for a string of plaintext</pre>
+            <pre>   string plaintext = get_string("Plaintext:  ");</pre><br>
+            <pre class="comment">   // Find the length of the string to create a matching ciphertext array</pre>
+            <pre>   int len = strlen(plaintext);</pre>
+            <pre>   char ciphertext[len + 1];</pre>
+            <pre>   ciphertext[len] = '\0';</pre><br>
+            <pre class="comment">   // Loop through plaintext, converting then assigning matching ciphertext</pre>
+            <pre>   for (int i = 0; i < len; i++)</pre>
+            <pre>   {</pre>
+            <pre>       ciphertext[n] = encrypt(plaintext[n], argv[1]);</pre>
+            <pre>   }</pre><br>
+            <pre class="comment">   // Print ciphertext and return</pre>
+            <pre>   printf("Ciphertext: %s\n", ciphertext);</pre>
+            <pre>   return 0;</pre>
+            }
+        </code>
+        <p>And that's the end of our main function. Now I just need to create the <em>encrypt( )</em> function.</p>
+        <h2>char encrypt(char c, string key)</h2>
+        <p>This function takes 2 inputs, the character we want to encrypt <em>char c</em>, as well as the key needed to encrypt it <em>string key</em>, it returns as output the corresponding <em>char</em> in <em>ciphertext</em>. To make sure the encryption is case sensitive, we need to handle 3 possibilities, if the character is uppercase, lowercase, or non-alphabetical. Here is the code:</p>
+        <code>
+            char encrypt(char c, string key)<br>
+            {<br>
+            <pre class="comment">   // Return uppercase character</pre>
+            <pre>   if (isupper(c))</pre>
+            <pre>   {</pre>
+            <pre>       int i = c - 'A';</pre>
+            <pre>       c = toupper(key[i]);</pre>
+            <pre>       return c;</pre>
+            <pre>   }</pre>
+            <pre class="comment">   // Return lowercase character</pre>
+            <pre>   else if (islower(c))</pre>
+            <pre>   {</pre>
+            <pre>       int i = c - 'a';</pre>
+            <pre>       c = tolower(key[i])</pre>
+            <pre>       return c;</pre>
+            <pre>   }</pre>
+            <pre class="comment">   // Return all non-alphabetical characters</pre>
+            <pre>   else</pre>
+            <pre>   {</pre>
+            <pre>       return c;</pre>
+            <pre>   }</pre>
+            }
+        </code>
+        <p>One note about the conversion: the reason I subtract 'A' or 'a' from the given character is to get the correct index of the letter from 0-25. As per the problem's instructions, the letter in the key[0] spot would substitute the letter 'A', key[1] would replace 'B', key[2] 'C', and so on. The way ASCII works is each letter has a number assigned to it, so 'A' - 'A' is effectively 65 - 65, which equals 0. 'B' - 'A' is 66 - 65, which equals 1, 'C' - 'A' = 2, etc. And that's it, my substitution program is complete and works as intended. </p>
+    </section>
+
+    <!-- END OF BLOG POST -->
+
+
+ </article>
+
+
+
+<!-- OTHER POSTS SECTION -->
+
+<section id="blog" class="blog container section">
+    <h2 class="heading__primary">Other Posts.</h2>
+    <div class="blog__row">
+        <a href="/blog/cs50/cs50-lecture-2" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_2.jpg" alt="CS50x Lecture 2 - Arrays">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 2 - Arrays.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-lecture-1-part-2" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_1_Part_2.jpg" alt="CS50x Lecture 1 - Part 2">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 2.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-lecture-1-part-1" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_1_Part_1.jpg" alt="CS50x Lecture 1 - Part 1">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 1.</div>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<!-- END OF OTHER POSTS -->
+
+<!-- FOOTER SECTION -->
+<footer class="footer container section">
+    <h3 class="footer__title"> Jordan Rogers </h3>
+</footer>
+<!-- END OF FOOTER -->
+
+<script defer src="../../js/mobile-nav.js"></script>
+<script defer src="../../js/dark-mode.js"></script>
+</body>
+</html>
