@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>CS50x Lecture 3 - Algorithms | Jordan Rogers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="../../images/favicon-16x16.png" sizes="any">
+    <link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="../../images/favicon-48x48.png" sizes="48x48">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/modern-normalize.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/hero.css">
+    <link rel="stylesheet" href="../../css/components/blog.css">
+    <link rel="stylesheet" href="../../css/components/contact.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../../css/utils.css">
+</head>
+<body>
+<!-- DESKTOP NAV -->
+<header class="header container">
+    <nav>
+        <ul class="header__menu">
+            <li><a href="../../" class="header__link">Home</a></li>
+            <li><a href="../../#about" class="header__link">About</a></li>
+            <li><a href="../../blog" class="header__link">Blog</a></li>
+            <li><a href="../../#contact" class="header__link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- END OF DESKTOP NAV -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <nav>
+        <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
+        <ul class="mobile-nav__menu">
+            <li>
+                <a class="mobile-nav__link" href="../../">Home</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#about">About</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../blog">Blog</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle" aria-label="Toggle between light and dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
+
+ <article>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero container">
+        <div class="blog__topic">CS50, Personal Development</div>
+        <h1 id="hero__title">CS50x - Lecture 3 - Algorithms.</h1>
+        <h2 id="hero__subtitle">search algorithms and running time</h2>
+        <div class="blog__date">Published September 23rd, 2024</div>
+    </section>
+
+    <!-- END OF HERO -->
+
+    <!-- BLOG POST SECTION -->
+     <section class="post container">
+        <p>In the previous lectures we were introduced to the concept of algorithms as step-by-step instructions on how to accomplish something, computer science being the use of algorithms by computers through the use of code. In <a href="https://www.youtube.com/watch?v=jZzyERW7h1A" target="_blank">Lecture 3</a> we dive a bit deeper into algorithms themselves, specifically <strong>search</strong> and <strong>sorting</strong> algorithms, as well as their efficiency.</p>
+        <h2>Linear search</h2>
+        <p>Remember from <a href="/blog/cs50/cs50-lecture-2">Lecture 2</a> how the computer's memory is like a grid of bytes? Well the computer can only look at a certain amount of bytes at a time, it can't look at all the data at once. If we want to get a certain value, we'll need to search for it. In the lecture, we're asked to picture an array like a series of lockers with the doors shut. If we want to find a specific number, let's say 50, we'd need to tell the computer what to do. We can imagine the instructions as pseudocode like this:</p>
+        <code>
+            For each door from left to right<br>
+            <pre>   If 50 is behind door</pre>
+            <pre>       Return true</pre>
+            Return false
+        </code>
+        <p>Now we can make it a little more code-like:</p>
+        <code>
+            for (int i = 0; i < n; i++)<br>
+            <pre>   if (doors[i] == 50)</pre>
+            <pre>       Return true</pre>
+            Return false
+        </code>
+        <p>This one by one approach is called <strong>linear search</strong> because you're searching in a straight line. How efficient is it? In the worst possible scenario, you'd have to search every locker once, so <em>n</em> times (n representing the total number of lockers). We would say it has a Big O notation of <em>O(n)</em>, or <em>in the order of n</em>. But more on that later.</p>
+        <h2>Binary search</h2>
+        <p><strong>Binary search</strong> is another <em>search algorithm</em>, and we used it in <a href="/blog/cs50/cs50-week-0">Lecture 0</a> with the example of literally tearing a phonebook in half. Binary search, so named because we split each search into 2 parts, goes something like this:</p>
+        <code>
+            <pre>If no doors left</pre>
+            <pre>   Return false</pre>
+            <pre>If 50 is behind middle door</pre>
+            <pre>   Return true</pre>
+            <pre>Else if 50 < middle door</pre>
+            <pre>   Search left half of doors</pre>
+            <pre>Else if 50 > middle door</pre>
+            <pre>   Search right half of doors</pre>
+        </code>
+        <p>Let's make our pseudocode slightly more code-like again:</p>
+        <code>
+            <pre>If no doors left</pre>
+            <pre>   Return false</pre>
+            <pre>If 50 is behind doors[middle]</pre>
+            <pre>   Return true</pre>
+            <pre>Else if 50 < doors[middle]</pre>
+            <pre>   Search doors[0] through doors[middle - 1]</pre>
+            <pre>Else if 50 > doors[middle]</pre>
+            <pre>   Search doors[middle + 1] through doors[n - 1]</pre>
+        </code>
+        <p>Do you see where the binary comes from? Instead of searching one by one, you're searching half of the problem at each step. Of course that won't make too much difference if you're searching through 5 or 6 lockers, but if you're searching through 100, 1,000, 10,000? Rather than search 1,000 individual doors, we'd go from 1,000 > 500 > 250 > 125 > 63 > 32 > 16 > 8 > 4 > 2 > 1, or just 11 steps, much better than 1,000, wouldn't you say? So binary search has a Big O notation of <em>O(log n)</em>, or <em>in the order of log n</em>.</p>
+        <h2>Recursion</h2>
+        <p>Recursion, according to the dictionary, is "the repeated application of a recursive procedure or definition" - recursive: "characterized by recurrence or repetition". In computer science, a recursive function is a function that calls it self, it repeats over and over until it encounters a condition that you set it to called the <em>base case</em>. Without a base case, or potentially with an incorrect base case, the computer would be caught in an <em>infinite loop</em>, calling itself infinitely until it runs out of memory to use and crashes.</p>
+        <p>Binary search, above, is a recursive function, notice the keyword <em>search</em> within the instructions when the instructions themselves are to search. So the base case would be <em>If no doors left</em> end the function by returning false. Then we'd go through each step, when we get to the bottom we start all over again but each time with less doors to search (half each time in this case).</p>
+        <h2>Efficiency and running times</h2>
+        <p>We can see the difference in efficiency and speed  between <strong>linear search</strong> - <em>O(n)</em>, and <strong>binary search</strong> - <em>O(log n)</em> in the following graph:</p>
+        <img src="../../images/blog/algorithm-efficiency-chart.jpg" alt="A chart showing the efficiency of algorithms n, n/2, and log n">
+        <p>Rather than be super specific, computer scientists discuss efficiency in terms of <em>the order of</em> running times. If you were to zoom out the above graph to exponential sizes or even infinity, or an indefinite end, you'd see that <em>n</em> and <em>n/2</em> very quickly become so similar as to be identical. So we just take the greatest factor and throw away the constant terms. A few common algorithm efficiencies are:</p>
+        <ul>
+            <li>O(n<sup>2</sup>)</li>
+            <li>O(n log n)</li>
+            <li>O(n)</li>
+            <li>O(log n)</li>
+            <li>O(1)</li>
+        </ul>
+        <p>Big O notation (named by German mathematicians <em>Ordnung</em>, which is german for <em>order</em>) considers the "worst" case scenario of an algorithm, or the upper bound of steps, or maybe the maximum number of times the algorithm has to run. Of the orders above, O(n<sup>2</sup>) is considered the worst running time, O(1) the fastest. Although 1 doesn't necessary mean just one step, it means a constant amount of steps, or the algorithm will take the same amount of steps to run every time.</p>
+        <p>We also might consider the "best" case, or the least amount of times an algorithm can run, represented by a Greek Omega - Ω. Theoretically when searching you could get lucky and the number you want is behind the first door you search, so both search algorithms are Ω(1). The Greek Theta - Θ - is also used when both the Big O and Omega are the same. </p>
+        <h2>Selection sort</h2>
+        <p>Sorting, as the name implies is arranging the list of values into an order that we want. As you might assume, when an array or list of items is sorted, searching it becomes much easier and faster for the computer. You couldn't use binary search on an unsorted list, because you can't just assume that everything to the left is of lower value, and everything to the right is of higher value. No, in an unsorted list you'd have to check every item individually to find anything you're looking for.</p>
+        <p>One sorting algorithm is <strong>selection sort</strong>. Typically, in selection sort you'd find the smallest number and swap it with the first element in the array. The pseudocode would look like:</p>
+        <code>
+            <pre>For i from 0 to n-1</pre>
+            <pre>   Find smallest number between numbers[i] and numbers[n-1]</pre>
+            <pre>   Swap smallest number with numbers[i]</pre>
+        </code>
+        <p>To find the running time for this algorithm, you can imagine in the worst possible case, the first line <em>for i from 0 to n-1</em> is asking the computer to do something <em>n</em> times, then the second line <em>find smallest number between numbers[i] and numbers[n-1]</em> is also asking to do something <em>n</em> times. So the Big O would be n*n or O(n<sup>2</sup>).</p>
+        <h2>Bubble sort</h2>
+        <p><strong>Bubble sort</strong> is another sorting algorithm that works more "locally", repeatedly swapping neighboring elements depending which one is greater than the other. In action, the largest elements "bubble" up to the end of the array. The pseudocode looks like:</p>
+        <code>
+            <li>Repeat n-1 times</li>
+            <li>    For i from 0 to n-2</li>
+            <li>        If numbers[i] and numbers[i+1] are out of order</li>
+            <li>            Swap them</li>
+            <li>    If no swaps</li>
+            <li>        Quit</li>
+        </code>
+        <p>Although technically very different sorting algorithms, the efficiency of <strong>bubble sort</strong> is very similar to <strong>selection sort</strong>, it also has a Big O of O(n<sup>2</sup>). Although, bubble sort does include a check and early break if the list is already sorted, so the best case would be Ω(n) because we just need to look through each item once (n times) if they're in order. Whereas selection sort would still need to perform n<sup>2</sup> steps in the best possible case, so because both the Big O and Omega are the same, we would say selection sort is Θ(n<sup>2</sup>).</p>
+        <h2>Merge sort</h2>
+        <p>The last sorting algorithm we saw in the lecture is <strong>merge sort</strong>, the fastest of the 3 since much like binary search, we use recursion to sort faster. The pseudocode is really short:</p>
+        <code>
+            <pre>If only one number</pre>
+            <pre>   Quit</pre>
+            <pre>Else</pre>
+            <pre>   Sort left half of number</pre>
+            <pre>   Sort right half of number</pre>
+            <pre>   Merge sorted halves</pre>
+        </code>
+        <p>This works by breaking each problem in half until you get to just one number. So in a line of 6341, the left half is 63. The right half is 41. Once again, of the left pair, the left half is 6, the right half is 3. Since we have only one number, let's sort and merge them: 36. Simultaneously of the right pair, the left half is 4, the right half is 1, let's sort and merge: 14. No we have two pairs that are each sorted, 36 | 14. Let's sort and merge them, we'll look at the first value of each half and see which is smaller, place it then place the other value, then do the same for the second value, so on and so forth.</p>
+        <p>Merge sort thus has an efficiency of <em>O(n log n)</em>, where you're performing a log n algorithm n number of times. It also has a best case of <em>Ω(n log n)</em>, so we'd say it's <em>Θ(n log n)</em>.</p>
+        <p>A note on searching, speed and efficiency as a whole though: you're always exchanging resources for each other, either memory or time. Merge sort is a much faster algorithm than selection or bubble sort, but it also takes up more space in the computer to store the temporary lists as it's sorting them.</p>
+    </section>
+
+    <!-- END OF BLOG POST -->
+
+
+ </article>
+
+
+
+<!-- OTHER POSTS SECTION -->
+
+<section id="blog" class="blog container section">
+    <h2 class="heading__primary">Other Posts.</h2>
+    <div class="blog__row">
+        <a href="/blog/cs50/cs50-lecture-2" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_2.jpg" alt="CS50x Lecture 2 - Arrays">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 2 - Arrays.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-lecture-1-part-2" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_1_Part_2.jpg" alt="CS50x Lecture 1 - Part 2">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 2.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-lecture-1-part-1" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_1_Part_1.jpg" alt="CS50x Lecture 1 - Part 1">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 1.</div>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<!-- END OF OTHER POSTS -->
+
+<!-- FOOTER SECTION -->
+<footer class="footer container section">
+    <h3 class="footer__title"> Jordan Rogers </h3>
+</footer>
+<!-- END OF FOOTER -->
+
+<script defer src="../../js/mobile-nav.js"></script>
+<script defer src="../../js/dark-mode.js"></script>
+</body>
+</html>
