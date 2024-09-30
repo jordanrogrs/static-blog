@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>CS50x Problem Set 3 - Tideman | Jordan Rogers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="../../images/favicon-16x16.png" sizes="any">
+    <link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="../../images/favicon-48x48.png" sizes="48x48">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/modern-normalize.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/hero.css">
+    <link rel="stylesheet" href="../../css/components/blog.css">
+    <link rel="stylesheet" href="../../css/components/contact.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../../css/utils.css">
+</head>
+<body>
+<!-- DESKTOP NAV -->
+<header class="header container">
+    <nav>
+        <ul class="header__menu">
+            <li><a href="../../" class="header__link">Home</a></li>
+            <li><a href="../../#about" class="header__link">About</a></li>
+            <li><a href="../../blog" class="header__link">Blog</a></li>
+            <li><a href="../../#contact" class="header__link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- END OF DESKTOP NAV -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <nav>
+        <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
+        <ul class="mobile-nav__menu">
+            <li>
+                <a class="mobile-nav__link" href="../../">Home</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#about">About</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../blog">Blog</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle" aria-label="Toggle between light and dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
+
+ <article>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero container">
+        <div class="blog__topic">CS50, Personal Development</div>
+        <h1 id="hero__title">CS50x - Problem Set 3 - Tideman.</h1>
+        <h2 id="hero__subtitle">elections, voters, ballots</h2>
+        <div class="blog__date">Published September 30th, 2024</div>
+    </section>
+
+    <!-- END OF HERO -->
+
+    <!-- BLOG POST SECTION -->
+     <section class="post container">
+        <h2>Problem to solve</h2>
+            <blockquote class="indent">
+                <p>You already know about plurality elections, which follow a very simple algorithm for determining the winner of an election: every voter gets one vote, and the candidate with the most votes wins.</p>
+                <p>There’s another kind of voting system known as a ranked-choice voting system. In a ranked-choice system, voters can vote for more than one candidate. Instead of just voting for their top choice, they can rank the candidates in order of preference.</p>
+                <p>The Tideman voting method (also known as “ranked pairs”) is a ranked-choice voting method that’s guaranteed to produce the Condorcet winner - the person who would have won any head-to-head matchup against another candidate - of the election if one exists. In a file called tideman.c in a folder called tideman, create a program to simulate an election by the Tideman voting method.</p>
+            </blockquote>
+            <p>The Tideman voting system works by making a “graph” of candidates, where an arrow (i.e. edge) from candidate A to candidate B indicates that candidate A wins against candidate B in a head-to-head matchup.</p>
+            <p>Looking at one of these graphs, the Tideman method says the winner of the election should be the “source” of the graph (i.e. the candidate that has no arrow pointing at them). It's possible however that there is no <em>Condorcet winner</em> because the graph creates an endless loop.</p>
+            <p>To prevent loops, the algorithm locks in the strongest wins first, since those are arguably the most significant. In particular, the Tideman algorithm specifies that matchup edges should be “locked in” to the graph one at a time, based on the “strength” of the victory (the more people who prefer a candidate over their opponent, the stronger the victory). So long as the edge can be locked into the graph without creating a cycle, the edge is added; otherwise, the edge is ignored.</p>
+            <p>Put more formally, the Tideman voting method consists of three parts:</p>
+            <ul>
+                <li><b>Tally:</b> Once all of the voters have indicated all of their preferences, determine, for each pair of candidates, who the preferred candidate is and by what margin they are preferred.</li>
+                <li><b>Sort:</b> Sort the pairs of candidates in decreasing order of strength of victory, where strength of victory is defined to be the number of voters who prefer the preferred candidate.</li>
+                <li><b>Lock:</b> Starting with the strongest pair, go through the pairs of candidates in order and “lock in” each pair to the candidate graph, so long as locking in that pair does not create a cycle in the graph.</li>
+            </ul>
+            <p>Once the graph is complete, the source of the graph (the one with no edges pointing towards it) is the winner!</p>
+            <p>For this problem, the main function is already written for us and is downloaded from <a href="https://cdn.cs50.net/2023/fall/psets/3/tideman.zip" target="_blank">here</a>. All we have to do is implement the following functions:</p>
+            <ul>
+                <li>bool vote(int rank, string name, int ranks[]);</li>
+                <li>void record_preferences(int ranks[]);</li>
+                <li>void add_pairs(void);</li>
+                <li>void sort_pairs(void);</li>
+                <li>void lock_pairs(void);</li>
+                <li>void print_winner(void);</li>
+            </ul>
+            <p>Let's start with the first function.</p>
+        <h2>bool vote(int rank, string name, int ranks[ ])</h2>
+            <p>We see here that the function will return a <strong>bool</strong> value, so it will return <strong>true</strong> if the vote is valid (and record the vote in the <em>ranks</em> array), and return <strong>false</strong> if the vote is invalid - the name has already been registered or isn't one of the candidates. As for the <em>ranks[ ]</em> array, the main function will ask each voter for a name in order of preference. Our vote function will look for the name in the list of candidates, if it finds a match, it will record the rank and return true, if it doesn't record a rank, then we can return false. Let's write some pseudocode:</p>
+            <ol>
+                <li><pre>Loop through each candidate in our array of candidates</pre></li>
+                <li><pre>   If the given name matches the candidates name</pre></li>
+                <li><pre>       Record index of candidate in the rank array</pre></li>
+                <li><pre>       Return true</pre></li>
+                <li><pre>Return false</pre></li>
+            </ol>
+            <p>Now let's see the code:</p>
+            <code>
+                <pre>bool vote(int rank, string name, int ranks[])</pre>
+                <pre>{</pre>
+                <pre class="comment">   // Loop through candidates</pre>
+                <pre>   for (int i = 0; i < candidate_count; i++)</pre>
+                <pre>   {</pre>
+                <pre class="comment">       // If name matches candidate's name, store rank and return true</pre>
+                <pre>       if (strcmp(name, candidates[i]) == 0)</pre>
+                <pre>       {</pre>
+                <pre>           ranks[rank] = i;</pre>
+                <pre>           return true</pre>
+                <pre>       }</pre>
+                <pre>   }</pre><br>
+                <pre class="comment">   // If name is not in list of candidates, return false</pre>
+                <pre>   return false</pre>
+                <pre>}</pre>
+            </code>
+            <p>Let's move on to the next function.</p>
+        <h2>void record_preferences(int ranks[ ])</h2>
+            <p>Now, preferences uses a matrix - a 2d array - to record how many voters prefer one candidate over another. It's initialized as a global variable like this:</p>
+            <code>
+                <pre class="comment">// preferences[i][j] is number of voters who prefer i over j</pre>
+                <pre>int preferences[MAX][MAX];</pre>
+            </code>
+            <p>Here's a little graphic to visualize how it works:</p>
+            <code>
+                <pre>    A  B  C</pre>
+                <pre>A [ 0, <span class="comment">2</span>, 3 ]</pre>
+                <pre>B [ 1, 0, 4 ]</pre>
+                <pre>C [ 0, 1, 0 ]</pre>
+            </code>
+            <p>In the matrix above, the candidate on the row to the left will be the winner, the candidate on the column at the top is the loser, and the number it corresponds to is how many voters preferred the left candidate. So, [A][B] = 2 (highlighted in green) means that 2 voters preferred A over B.</p>
+            <p>This function will need a double loop to go through the matrix and add 1 to the count for each voter's <em>ranks[ ]</em> array, the pseudocode looks like this:</p>
+            <ol>
+                <li><pre>Loop through preferred candidates</pre></li>
+                <li><pre>   Loop through losing candidates</pre></li>
+                <li><pre>       Add 1 to preferred candidate's spot in <em>preferences[i][j]</em></pre></li>
+                <li><pre>Return</pre></li>
+            </ol>
+            <p>And here's the code:</p>
+            <code>
+                <pre>void record_preferences(int ranks[ ])</pre>
+                <pre>{</pre>
+                <pre class="comment">   // Loop through preferred candidates</pre>
+                <pre>   for (int i = 0; i < candidate_count; i++)</pre>
+                <pre>   {</pre>
+                <pre class="comment">       // Loop through the next index of ranks</pre>
+                <pre>       for (int j = i + 1; j < candidate_count; j++)</pre>
+                <pre>       {</pre>
+                <pre>           preferences[ranks[i]][ranks[j]]++;</pre>
+                <pre>       }</pre>
+                <pre>   }</pre>
+                <pre>   return;</pre>
+                <pre>}</pre>
+            </code>
+            <p>You can see that it adds 1 to the preferences matrix where i is the lower rank, and thus the preferred candidate. Let's move on to the next function:</p>
+        <h2>void add_pairs(void)</h2>
+        <p>This blog is getting quite long and complicated and I'm not even half way done! So I'm just going to put my next 2 functions with a brief explanation. The <em>add_pairs</em> function loops through the preferrences array and stores the winner and loser of each pair, as well as keeping track of how many pairs we have (so we can use them later):</p>
+        <code>
+            <pre>void add_pairs(void)</pre>
+            <pre>{</pre>
+            <pre class="comment">   // Loop through entire preferrences array</pre>
+            <pre>   for (int i = 0; i < candidate_count; i++)</pre>
+            <pre>   {</pre>
+            <pre>       for (int j = 0; j < candidate_count; j++)</pre>
+            <pre>       {</pre>
+            <pre class="comment">           // Store each pair's winner and loser and iterate pair_count</pre>
+            <pre>           if (preferences[i][j] > preferences[j][i])</pre>
+            <pre>           {</pre>
+            <pre>               pairs[pair_count].winner = i;</pre>
+            <pre>               pairs[pair_count].loser = j;</pre>
+            <pre>               pair_count++;</pre>
+            <pre>           }</pre>
+            <pre>       }</pre>
+            <pre>   }</pre>
+            <pre>   return</pre>
+            <pre>}</pre>
+        </code>
+        <h2>void sort_pairs(void)</h2>
+        <p>This function sorts the pairs in decreasing order by the "strength" of their victory. I realized after going over it, my bubble sort algorithm probably isn't the most efficient, but I wanted to experiment with different types of loops at the time. Here is the code:</p>
+        <code>
+            <pre>void sort_pairs(void)</pre>
+            <pre>{</pre>
+            <pre class="comment">   // Reverse bubble sort, weakest pair will bubble to the top</pre>
+            <pre>   int swap_count = 0;</pre><br>
+            <pre>   do</pre>
+            <pre>   {</pre>
+            <pre class="comment">       // Initialize an empty pair to swap if needed</pre>
+            <pre>       pair swap_pair;</pre><br>
+            <pre class="comment">       // Reset swap_count</pre>
+            <pre>       swap_count = 0;</pre><br>
+            <pre class="comment">       // Loop through each pair</pre>
+            <pre>       for (int i = 0; i < pair_count - 1; i++)</pre>
+            <pre>       {</pre>
+            <pre class="comment">           // Look at each adjacent pair, if number of voters is less, swap places</pre>
+            <pre>           if (preferences[pairs[i].winner][pairs[i].loser] <</pre>
+            <pre>               preferences[pairs[i + 1].winner][pairs[i + 1].loser])</pre>
+            <pre>           {</pre>
+            <pre>               swap_pair = pairs[i];</pre>
+            <pre>               pairs[i] = pairs[i + 1];</pre>
+            <pre>               pairs[i + 1] = swap_pair;</pre>
+            <pre>               swap_count++;</pre>
+            <pre>           }</pre>
+            <pre>       }</pre>
+            <pre>   }</pre>
+            <pre>   while (swap_count != 0);</pre>
+            <pre>   return;</pre>
+            <pre>}</pre>
+        </code>
+        <h2>void lock_pairs(void)</h2>
+        <p>Now the fun part. We need to lock the pairs in order, but we also need to check if we're going to create a cycle or loop before we lock it in, to do this I'll make a helper function above the <em>lock_pairs</em> function, this new function <em>creates_cycle</em> will recursively check if locking in a pair will create a cycle. Let's start with the main one though. This one is quite simple, it will go through all the pairs and if the pair won't create a cycle, it'll lock in the pair in another 2d matrix: <em>bool locked[MAX][MAX]</em>. Here's the code:</p>
+        <code>
+            <pre>void lock_pairs(void)</pre>
+            <pre>{</pre>
+            <pre class="comment">   // Loop through pairs and lock edges</pre>
+            <pre>   for (int i = 0; i < pair_count; i++)</pre>
+            <pre>   {</pre>
+            <pre>       if (!creates_cycle(pairs[i].winner, pairs[i].loser))</pre>
+            <pre>       {</pre>
+            <pre>           locked[pairs[i].winner][pairs[i].loser] = true;</pre>
+            <pre>       }</pre>
+            <pre>   }</pre>
+            <pre>   return;</pre>
+            <pre>}</pre>
+        </code>
+        <h2>bool creates_cycle(int winner, int loser)</h2>
+        <p>Now for the recursive function. I'd like to break this one down a bit, since I still feel like I fully understand what's going on with most recursive functions. In this function, we give it the index of the winning candidate, and the index of the losing candidate. Then we want to check all the possible edges to see if we're creating a cycle in the graph.</p>
+        <p>Every recursive function has a base case, and a recursive case. The base case marks the very end of the loop, where we terminate the function. The recursive case calls the function again with modified parameters, thus creating a loop until you reach the base case.</p>
+        <p>In this function, the base case will be when we've gone through all the possible candidates and we've looped back to where we started.</p>
+        <p>The recursive case will loop through all the candidates and check if the given loser has an edge over a candidate, if the loser does have an edge, it will recursively check again if there's an edge where the new loser points back to the original winner. With each call, it checks if the loser of any pair can eventually point back to the winner, if it does, it will return true because a cycle was created. Here's the code:</p>
+        <code>
+            <pre>bool creates_cycle(int winner, int loser)</pre>
+            <pre>{</pre>
+            <pre class="comment">   // Base case: loser points back to winner, creating a cycle</pre>
+            <pre>   if (loser == winner)</pre>
+            <pre>   {</pre>
+            <pre>       return true;</pre>
+            <pre>   }</pre><br>
+            <pre class="comment">   // Recursive case: check if loser has an edge, and if the new loser points back to winner</pre>
+            <pre>   for (int i = 0; i < candidate_count; i++)</pre>
+            <pre>   {</pre>
+            <pre>       if (locked[loser][i])</pre>
+            <pre>       {</pre>
+            <pre>           if (creates_cycle(winner, i))</pre>
+            <pre>           {</pre>
+            <pre>               return true;</pre>
+            <pre>           }</pre>
+            <pre>       }</pre>
+            <pre>   }</pre><br>
+            <pre class="comment">   // If no cycle is found, return false</pre>
+            <pre>   return false;</pre>
+            <pre>}</pre>
+        </code>
+        <p>Putting these two functions together, <em>lock_pairs</em> and <em>creates_cycle</em>, really does look quite elegant - after I finished them of course. It took quite a long time to figure out the logic and lots of trial and error for each of these functions.</p>
+        <p>Of course, there's one function left: <em>print_winner</em>. And it's not without its complications, but I'm quite tired and this blog is already running long, so I think I'll have to leave you hanging here in suspense. Until next time!</p>
+    </section>
+
+    <!-- END OF BLOG POST -->
+
+
+ </article>
+
+
+
+<!-- OTHER POSTS SECTION -->
+
+<section id="blog" class="blog container section">
+    <h2 class="heading__primary">Other Posts.</h2>
+    <div class="blog__row">
+        <a href="/blog/cs50/cs50-lecture-3" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_3.jpg" alt="CS50x Lecture 3 - Algorithms">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 3 - Algorithms.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-lecture-2" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_2.jpg" alt="CS50x Lecture 2 - Arrays">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 2 - Arrays.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-lecture-1-part-2" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_1_Part_2.jpg" alt="CS50x Lecture 1 - Part 2">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 1 - Part 2.</div>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<!-- END OF OTHER POSTS -->
+
+<!-- FOOTER SECTION -->
+<footer class="footer container section">
+    <h3 class="footer__title"> Jordan Rogers </h3>
+</footer>
+<!-- END OF FOOTER -->
+
+<script defer src="../../js/mobile-nav.js"></script>
+<script defer src="../../js/dark-mode.js"></script>
+</body>
+</html>
