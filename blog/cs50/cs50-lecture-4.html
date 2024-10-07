@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>CS50x Lecture 4 - Memory | Jordan Rogers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="../../images/favicon-16x16.png" sizes="any">
+    <link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="../../images/favicon-48x48.png" sizes="48x48">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=satoshi@300,301,400,401,500,501,700,701&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/modern-normalize.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/hero.css">
+    <link rel="stylesheet" href="../../css/components/blog.css">
+    <link rel="stylesheet" href="../../css/components/contact.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/mobile-nav.css">
+    <link rel="stylesheet" href="../../css/utils.css">
+</head>
+<body>
+<!-- DESKTOP NAV -->
+<header class="header container">
+    <nav>
+        <ul class="header__menu">
+            <li><a href="../../" class="header__link">Home</a></li>
+            <li><a href="../../#about" class="header__link">About</a></li>
+            <li><a href="../../blog" class="header__link">Blog</a></li>
+            <li><a href="../../#contact" class="header__link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- END OF DESKTOP NAV -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <nav>
+        <button class="mobile-nav__toggle" aria-label="Open mobile navigation menu"></button>
+        <ul class="mobile-nav__menu">
+            <li>
+                <a class="mobile-nav__link" href="../../">Home</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#about">About</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../blog">Blog</a>
+            </li>
+            <li>
+                <a class="mobile-nav__link" href="../../#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+ <!-- END OF MOBILE NAV -->
+
+ <button id="theme-toggle" aria-label="Toggle between light and dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="sun-icon active">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="moon-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>
+      
+</button>
+
+ <article>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero container">
+        <div class="blog__topic">CS50, Personal Development</div>
+        <h1 id="hero__title">CS50x - Lecture 4 - Memory.</h1>
+        <h2 id="hero__subtitle">hexadecimal, pointers, and memory</h2>
+        <div class="blog__date">Published October 7th, 2024</div>
+    </section>
+
+    <!-- END OF HERO -->
+
+    <!-- BLOG POST SECTION -->
+     <section class="post container">
+        <p>I'm back to CS50 after a short break. This week I'll be going over <a href="https://www.youtube.com/watch?v=F9-yqoS7b8w" target="_blank">Lecture 4</a> on Memory. My plan is to stick to 2 computer science blogs a week (a lecture and problem set), and keep writing on other subjects, feelings, and projects I have as well. Without further ado, lecture 4.</p>
+        <h2>Hexadecimal</h2>
+        <p>This week's lecture starts with an overview of hexadecimal, specifically as a function of RGB values for pixels. The word <strong>hexadecimal</strong> consists of <em>hexa-</em> (hex), which is Greek for six, and <em>-decimal</em>, which is Latin for ten. A bit confusing mixing Greek and Latin, but oh well. Funny sidenote, Latin for six is <em>sex</em>, so in Latin it'd be a sexidecimal. <strong>Hexadecimal</strong> is a base-16 system, where we count up to 16 (or 15 + 1 for the zero) with a single digit. The digits are:</p>
+        <code>0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F</code>
+        <p>Where A represents 10, B 11, C 12, and so on.</p>
+        <p>Hexadecimal is especially useful for computers that process data in bytes. If we remember from earlier lectures, a byte, or 8-bits, can store up to 2<sup>8</sup> or 256 values, minus 1 for the 0 equals the number 255. If we put two hexadecimals together, we get 16x16 values, which equals 256, minus 1 for the 0, or 255 as well. So, in hexadecimal, 00 = 0, 0F = 15, 10 = 16, and FF = 255.</p>
+        <p>You've probably seen an RGB value in hexadecimal, which is has a hash symbol followed by 6 letters/numbers, for example #FFFFFF is the color white. This hex code is actually 3 different numbers, which represent the RGB values, FF FF FF, tells the computer to display 255 Red, 255 Green, and 255 Blue, which is white. Conversely, #000000, or 00 00 00, is black.</p>
+        <p>The advantage of using hexadecimal (especially in web development and colors) is the ability to display lots of data more succinctly. #FFFFFF in hexadecimal would be 111111111111111111111111 in binary!</p>
+        <h2>Memory</h2>
+        <p>As we saw in Lecture 2, we can picture a computer's memory like a grid of bytes. Something like this:</p>
+        <img src="../../images/blog/lecture2-memory-char.jpg" alt="A graphic representation of a byte of memory" style="max-height:25rem;">
+        <p>And for each byte, the computer assigns a number as an address, typically in hexadecimal notation. The convention for displaying a hexadecimal number is to prefix it with <em>0x</em>. For 10 in decimal is 10, but in hexadecimal 10 = 16. To make this clear, we'd use 0x10, which means hexadecimal 10 = 16.</p>
+        <p>In C, we'll learn 2 new operators today:</p>
+        <ul>
+            <li><em>&</em> provides the address of something stored in memory</li>
+            <li><em>*</em> tells the compiler to go to a memory address</li>
+        </ul>
+        <h3>Pointers</h3>
+        <p>A <strong>pointer</strong> is a variable that stores the address in memory of another value. Pointers are usually stored in an 8-byte value, which provides enough space to <em>point</em> to any byte in the billions of bytes computers now have access to.</p>
+        <p>Up to this point in CS50, the CS50 library has provided some <em>"training wheels"</em> so to speak, or simplifications to help us code easier. One of these was the <strong>string</strong> variable. In C, string is not a data type, rather, it's an array of characters. A string, is actually just the address of the first character in memory, or <strong>char *</strong>. The variable doesn't know how long the string is per say, rather, the string itself tells the computer when to stop by ending in a <strong>NUL</strong> character <em>'\0'</em> whose bits are all 0. So a string is just a <strong>pointer</strong> to the first character in a <em>string</em> (or array) of characters.</p>
+        <p>This raises an interesting problem for comparing two strings. Because a string isn't literally a word, rather the address to a word, we can't compare it like we would integers, with ==, <, >, etc. If we compare 2 strings, we'd just be comparing the address of 2 different bytes, so it'd always show up as different. Instead we'd use a useful function already built for us from the <em>&lt;string.h&gt;</em> library called <em>strcmp( )</em> which returns 0 if both strings are the same, and a positive or negative number depending which one comes first ASCII-betically (according to the ASCII codes).</p>
+        <p>Similarly, for copying, if we just try to use the = operator, we'd simply be copying the address of the string, not the string itself. To solve this, we'd create a new string (while making sure to allocate enough memory for it - which would be the length of the string + 1 for the <em>'\0'</em> terminator character), then we can copy each character over in a loop, or just use the <em>strcpy( )</em> function.</p>
+        <p>Another thing to always keep in mind is error checking. When allocating memory, a special <strong>NULL</strong> character (different from <strong>NUL</strong>) is assigned when the memory the pointer leads to is empty. Before trying to access any memory, we should always check if it's <strong>NULL</strong> or not. </p>
+        <h3>Malloc and Valgrind</h3>
+        <p>We say a computer is <em>leaking</em> memory when a program allocates the memory for something, but doesn't free it after. So the computer's operating system can't reassign it, and we start running out of memory. In C, which requires the programmer to be very conscious of the program's memory use, we assign memory with <em>malloc( )</em>, and for everything we assign, we must free with <em>free( )</em>.</p>
+        <p><strong>Valgrind</strong> is a program we can use to check if our code is <em>leaking memory</em>. Valgrind will throw an error if we do something wrong specifically related to memory. For example, accessing out-of-bounds memory or leaking memory.</p>
+        <h3>Garbage values</h3>
+        <p>When assigning memory, there's no guarantee that it will be empty. Computers have a limited amount of memory, and so they reuse what they can after it's done being used. If we allocate some memory that's been used before but don't assign a specific value to it, it may still contain the old value, which we call <strong>junk</strong> or <strong>garbage values</strong>.</p>
+        <h2>Scope</h2>
+        <p>Next, we learn about the <em>scope</em> of variables and functions as relates to memory. A common problem is the need to swap values. To do this, we could create a function to swap two variables. Let's see an example:</p>
+        <code>
+            <pre>void swap(int a, int b);</pre><br>
+            <pre>int main(void)</pre>
+            <pre>{</pre>
+            <pre>   int x = 1;</pre>
+            <pre>   int y = 2;</pre>
+            <pre>   printf("x is %i, y is %i\n", x, y);</pre>
+            <pre>   swap(x, y);</pre>
+            <pre>   printf("x is %i, y is %i\n", x, y);</pre>
+            <pre>}</pre><br>
+            <pre>void swap(int a, int b)</pre>
+            <pre>{</pre>
+            <pre>   int tmp = a;</pre>
+            <pre>   a = b;</pre>
+            <pre>   b = tmp;</pre>
+            <pre>}</pre>
+        </code>
+        <p>This code will run, but it won't work. The values of x and y stay the same after passing them through the <em>swap( )</em> function.</p>
+        <p>This is a problem of <strong>scope</strong>. The variables declared in the <em>main</em> function only have the scope of that function. Each function has a different <em>frame</em> or area of memory that's allocated for it. </p>
+        <p>In the above code, the arguments were <em>passed by value</em> or <em>passed by copy</em>, which means a copy of the value was created in the <em>swap( )</em> function. But those values disappear when the function terminates. Instead, to update the value in the <em>main</em> function, we need to <em>pass by reference</em>. Instead of giving it a value to make a copy, we can give the <em>swap( )</em> function the <em>addresses</em> or <em>pointers</em> to the values of a and b, and then the computer will know where to make the changes to the actual variables we want. That looks like this:</p>
+        <code>
+            <pre>void swap(int *a, int *b);</pre><br>
+            <pre>int main(void)</pre>
+            <pre>{</pre>
+            <pre>   int x = 1;</pre>
+            <pre>   int y = 2;</pre>
+            <pre>   printf("x is %i, y is %i\n", x, y);</pre>
+            <pre>   swap(&x, &y);</pre>
+            <pre>   printf("x is %i, y is %i\n", x, y);</pre>
+            <pre>}</pre><br>
+            <pre>void swap(int *a, int *b)</pre>
+            <pre>{</pre>
+            <pre>   int tmp = *a;</pre>
+            <pre>   *a = *b;</pre>
+            <pre>   *b = tmp;</pre>
+            <pre>}</pre>
+        </code>
+        <p>Notice the difference with the pointers. We're telling the computer to <em>go to</em> the value of a and b, and then change them.</p>
+        <h3>Heap and Stack</h3>
+        <p>The last thing I want to talk about is the <strong>heap</strong> and the <strong>stack</strong>. There are conventions to how computer memory is laid out, which can be illustrated as follows:</p>
+        <img src="../../images/blog/memory-stack-illustration.jpg" alt="A graphic representation of a computer memory stack" style="max-height:25rem;">
+        <p>Generally speaking, the computer reserves the top of its memory for the machine code, then the <em>global</em> variables below that, then the <strong>heap</strong> which grows downward, and finally the <strong>stack</strong> which grows upwards.</p>
+        <p>When you use <em>malloc</em> to ask the computer for memory, it comes from the <strong>heap</strong> memory. Functions and variables use <strong>stack</strong> memory. When we call a new function, it creates a new <em>frame</em> on the stack, on top of the function(s) we're using below it. When that function finishes, it's essentially forgotten by the computer and the memory is freed to be used for something else.</p>
+        <p>Of course, if heap memory grows down, and stack memory grows up, they may eventually run into eachother, which is what we call a <strong>buffer overflow</strong>. <strong>Heap overflow</strong> is when we overflow the heap. <strong>Stack overflow</strong> is when we call too many functions and overflow the memory available.</p>
+        <h2>User input</h2>
+        <p>A quick note on user input. When prompting the user for input, specifically strings, but possibly other values as well, we don't really know what they'll enter or how long it will be. We may try to pre-allocate enough memory, but even still, the input may exceed the bounds of the assigned memory and we get a <em>segmentation fault</em>. So strings and user inputs can create errors that make our code unsafe for use.</p>
+    </section>
+
+    <!-- END OF BLOG POST -->
+
+
+ </article>
+
+
+
+<!-- OTHER POSTS SECTION -->
+
+<section id="blog" class="blog container section">
+    <h2 class="heading__primary">Other Posts.</h2>
+    <div class="blog__row">
+        <a href="/blog/cs50/cs50-pset3-tideman" class="blog__article">
+            <div>
+                <img src="../../images/blog/pset3-tideman.jpg" alt="A ballot box for voting">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Problem Set 3 - Tideman.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-lecture-3" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_3.jpg" alt="CS50x Lecture 3 - Algorithms">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 3 - Algorithms.</div>
+            </div>
+        </a>
+        <a href="/blog/cs50/cs50-lecture-2" class="blog__article">
+            <div>
+                <img src="../../images/blog/CS50x_2024_Lecture_2.jpg" alt="CS50x Lecture 2 - Arrays">
+                <div class="blog__topic">CS50, Personal Development</div>
+                <div class="blog__title heading__secondary">CS50x - Lecture 2 - Arrays.</div>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<!-- END OF OTHER POSTS -->
+
+<!-- FOOTER SECTION -->
+<footer class="footer container section">
+    <h3 class="footer__title"> Jordan Rogers </h3>
+</footer>
+<!-- END OF FOOTER -->
+
+<script defer src="../../js/mobile-nav.js"></script>
+<script defer src="../../js/dark-mode.js"></script>
+</body>
+</html>
